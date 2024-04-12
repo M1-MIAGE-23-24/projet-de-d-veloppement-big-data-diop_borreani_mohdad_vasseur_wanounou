@@ -23,6 +23,7 @@ public class BigDataM12324Application {
 			User user = User.builder().firstname("Bob").lastname("Doe").build();
 			userJpaService.create(user);
 			userFileService.create(user);
+			System.out.println("User created");
 		};
 	}
 
