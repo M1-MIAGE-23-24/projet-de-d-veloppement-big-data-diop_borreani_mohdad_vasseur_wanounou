@@ -26,7 +26,7 @@ Points clés :
 
 
 # 0. Prérequis
-Avant de lancer, il est nécessaire de lancer SGDBs avec la commande suivante : \
+Avant d'exécuter le projet, il est nécessaire de lancer les SGDBs avec la commande suivante : \
 ```docker-compose up -d``` \
 Assurez vous d'avoir les ports 6379 et 27017 de libre sur votre machine.
 
