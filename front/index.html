@@ -1,0 +1,81 @@
+
+<!doctype html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+
+    <!-- My  dependencies -->
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_main_block/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_dropdown_icon/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_dropdown_text/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_icon/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_drag_and_drop/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_button/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_container/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_code_presentation/app.js"></script>
+    <!-- <script type="module" src="https://borreani.fr/bt_web_components/bt_composant_icon/app.js"></script> -->
+
+    <!-- CSS générale -->
+    <link rel="stylesheet" href="styles.css"> 
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--
+      /**
+      * ! aaa 
+      */
+    -->
+
+    </head>
+      <body>
+        <bt-mainblock
+          jsonObjetString='
+            {
+              "logo":{
+                "link":"./data/logo.png"
+              },
+              "mainRoute": {
+                "label":"Présentation du projet",
+                "route":"./html-snippets/page_presentation_projet.html",
+                "typeRoute":"http"
+              },
+              "routes": [
+                {
+                  "label":"Présentation du projet",
+                  "route":"./html-snippets/page_presentation_projet.html",
+                  "typeRoute":"http"
+                },
+                {
+                  "label":"Interface API",
+                  "route":"./html-snippets/page_interface_api.html",
+                  "typeRoute":"http"
+                },
+                {  
+                  "label":"Benchmarking",
+                  "route":"./html-snippets/page_benchmarking.html",
+                  "typeRoute":"http"
+                },
+                {  
+                  "label":"Analyse Benchmarking",
+                  "route":"./html-snippets/page_analyse_benchmark.html",
+                  "typeRoute":"http"
+                }
+              ],
+              "footer": [
+                {
+                  "label":"© 2024 - Tous droits réservés",
+                  "route":"./html-snippets/page_mentions_legales.html",
+                  "typeRoute":"http"
+                }
+              ] 
+            }
+      '
+    >
+    </bt-mainblock> 
+
+  </body>
+</html>

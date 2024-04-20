@@ -1,0 +1,104 @@
+
+<style>
+  .div2{
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+    justify-content: center;
+    overflow: hidden;
+
+  }
+  .div4{
+    margin: auto;;
+    overflow: hidden;
+    align-items: row;
+
+  }
+  .div5{
+    flex:1;
+  }
+  .div1 {
+    align-items: center;
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  }
+
+  .div3 {
+    align-items: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .space {
+    --bt-height: 30px;
+  }
+
+  .space1 {
+    --bt-height: 20px;
+  }
+
+  .page_box {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap; 
+  }
+
+ 
+</style>
+
+
+<div class="div3">
+  <h2>Interface Api</h2>
+    <p>
+        Cette onglet à pour objectif de tester différentes requêtes sur les deux bases de données en même temps.
+    </p>
+<div class="div4">
+  <div class="div5"></div>
+<div class="div2">
+
+  <div class="div1">
+    <h2>Insertion</h2>
+    <div class="page_box">
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+    </div>
+    <bt-container class="space"></bt-container>
+    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+  </div>
+
+  <div class="div1">
+    <h2>Supression</h2>
+    <div class="page_box">
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+    </div>
+    <bt-container class="space"></bt-container>
+    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+  </div>
+
+  <div class="div1">
+    <h2>Modification</h2>
+    <div class="page_box">
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+    </div>
+    <bt-container class="space"></bt-container>
+    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+  </div>
+
+</div>
+<div class="div5"></div>
+
+</div>
+</div>
