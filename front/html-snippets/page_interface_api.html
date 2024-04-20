@@ -38,6 +38,14 @@
     width: 100%;
   }
 
+  .div6 {
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    flex-direction: column; /* Pour aligner les éléments verticalement */
+
+  }
+
   .space {
     --bt-height: 30px;
   }
@@ -74,7 +82,11 @@
       <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
     </div>
     <bt-container class="space"></bt-container>
-    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+    <bt-input jsonObjectString='{"label":"Value 1"}'></bt-input>
+    <bt-input jsonObjectString='{"label":"Value 2"}'></bt-input>
+    <bt-input jsonObjectString='{"label":"Value 3"}'></bt-input>
+    <bt-input jsonObjectString='{"label":"Value 4"}'></bt-input>
+    <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
   </div>
 
   <div class="div1">
@@ -84,7 +96,7 @@
       <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
     </div>
     <bt-container class="space"></bt-container>
-    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+    <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
   </div>
 
   <div class="div1">
@@ -94,9 +106,9 @@
       <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
     </div>
     <bt-container class="space"></bt-container>
-    <bt-button jsonObjectString='{"label":"Lancer"}'></bt-button>
+    <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
   </div>
-
+  
 </div>
 <div class="div5"></div>
 
