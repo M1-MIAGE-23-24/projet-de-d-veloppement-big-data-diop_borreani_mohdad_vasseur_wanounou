@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <title>Titre de la page</title>
 
-    <!-- My  dependencies -->
+    <!----------------- My  dependencies ----------------->
+
+    <!-- Under is our custom webcomponents-->
     <script type="module" src="http://localhost/bt_web_components/bt_composant_main_block/app.js"></script>
     <script type="module" src="http://localhost/bt_web_components/bt_composant_dropdown_icon/app.js"></script>
     <script type="module" src="http://localhost/bt_web_components/bt_composant_dropdown_text/app.js"></script>
@@ -16,10 +18,22 @@
     <script type="module" src="http://localhost/bt_web_components/bt_composant_container/app.js"></script>
     <script type="module" src="http://localhost/bt_web_components/bt_composant_code_presentation/app.js"></script>
     <script type="module" src="http://localhost/bt_web_components/bt_composant_input/app.js"></script>
-
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_card/app.js"></script>
+    <script type="module" src="http://localhost/bt_web_components/bt_composant_chart/app.js"></script>
     <!-- <script type="module" src="https://borreani.fr/bt_web_components/bt_composant_icon/app.js"></script> -->
+    
+    <!-- Under is all pages -->
+    <script type="module" src="./html-snippets/page/page_presentation/app.js"></script>
+    <script type="module" src="./html-snippets/page/page_analyse_benchmark/app.js"></script>
+    <script type="module" src="./html-snippets/page/page_benchmarking/app.js"></script>
+    <script type="module" src="./html-snippets/page/page_interface_api/app.js"></script>
 
-    <!-- CSS générale -->
+    <!-----------------  Extern dependencies  ----------------->
+
+    <!-- It's for make a chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-----------------  My CSS générale ----------------->
     <link rel="stylesheet" href="styles.css"> 
 
 
@@ -42,29 +56,29 @@
               },
               "mainRoute": {
                 "label":"Présentation du projet",
-                "route":"./html-snippets/page_presentation_projet.html",
-                "typeRoute":"http"
+                "route":"&lt;page-presentation&gt;&lt;/page-presentation&gt;",
+                "typeRoute":"html"
               },
               "routes": [
                 {
                   "label":"Présentation du projet",
-                  "route":"./html-snippets/page_presentation_projet.html",
-                  "typeRoute":"http"
+                  "route":"&lt;page-presentation&gt;&lt;/page-presentation&gt;",
+                  "typeRoute":"html"
                 },
                 {
                   "label":"Interface API",
-                  "route":"./html-snippets/page_interface_api.html",
-                  "typeRoute":"http"
+                  "route":"&lt;page-interface-api&gt;&lt;/page-interface-api&gt;",
+                  "typeRoute":"html"
                 },
                 {  
                   "label":"Benchmarking",
-                  "route":"./html-snippets/page_benchmarking.html",
-                  "typeRoute":"http"
+                  "route":"&lt;page-benchmarking&gt;&lt;/page-benchmarking&gt;",
+                  "typeRoute":"html"
                 },
                 {  
                   "label":"Analyse Benchmarking",
-                  "route":"./html-snippets/page_analyse_benchmark.html",
-                  "typeRoute":"http"
+                  "route":"&lt;page-analyse-benchmark&gt;&lt;/page-analyse-benchmark&gt;",
+                  "typeRoute":"html"
                 }
               ],
               "footer": [

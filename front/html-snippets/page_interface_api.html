@@ -8,7 +8,7 @@
 
   }
   .div4{
-    margin: auto;;
+    margin: auto;
     overflow: hidden;
     align-items: row;
 
@@ -26,15 +26,17 @@
     margin: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
 
+  .div1:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    scale: 1.01;
   }
 
   .div3 {
     align-items: center;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    align-items: center;
     width: 100%;
   }
 
@@ -57,11 +59,27 @@
   .page_box {
     width: 100%;
     display: flex;
-    gap: 20px;
+    gap: 0px;
     justify-content: center;
     flex-wrap: wrap; 
   }
 
+  .paragraphe {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-top: -10px;
+    margin-bottom: -14px;
+    padding: 0px;
+  }
+
+  .paragraphe2 {
+    margin-top: 4px;
+    margin-bottom: -6px;
+  }
+
+
+  
  
 </style>
 
@@ -78,13 +96,19 @@
   <div class="div1">
     <h2>Insertion</h2>
     <div class="page_box">
+      <p class="paragraphe2">MongoDb</p>
       <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      <p class="paragraphe2">Redis</p>
       <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;\n\tHello, world!\n&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
     </div>
     <bt-container class="space"></bt-container>
+    <div class="paragraphe"><p>Value 1</p></div>
     <bt-input jsonObjectString='{"label":"Value 1"}'></bt-input>
+    <div class="paragraphe"><p>Value 2</p></div>
     <bt-input jsonObjectString='{"label":"Value 2"}'></bt-input>
+    <div class="paragraphe"><p>Value 3</p></div>
     <bt-input jsonObjectString='{"label":"Value 3"}'></bt-input>
+    <div class="paragraphe"><p>Value 4</p></div>
     <bt-input jsonObjectString='{"label":"Value 4"}'></bt-input>
     <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
   </div>
