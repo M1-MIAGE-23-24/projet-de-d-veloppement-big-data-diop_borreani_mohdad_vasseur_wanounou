@@ -34,7 +34,7 @@
       components.forEach(component => {
           const script = document.createElement('script');
           script.type = 'module';
-          script.src = `http://localhost/bt_web_components/${component}/app.js`;
+          script.src = `${host}/bt_web_components/${component}/app.js`;
           document.head.appendChild(script);
       });
   </script>
