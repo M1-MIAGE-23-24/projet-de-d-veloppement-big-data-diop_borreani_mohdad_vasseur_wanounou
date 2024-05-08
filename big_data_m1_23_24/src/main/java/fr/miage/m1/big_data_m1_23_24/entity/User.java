@@ -2,13 +2,22 @@ package fr.miage.m1.big_data_m1_23_24.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity // JPA
+import java.util.UUID;
+
+@Entity
 @Setter @Getter @NoArgsConstructor @AllArgsConstructor @Builder // Lombok
-@Table(name = "users") // JPA
+@Table(name = "user")
+@Document(collation = "user") // Mongo
 public class User {
-    @Id // JPA
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // JPA
+    @Id
+
+    @org.springframework.data.annotation.Id // MongoDB primary key
+    private UUID uuid;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     private String firstname;

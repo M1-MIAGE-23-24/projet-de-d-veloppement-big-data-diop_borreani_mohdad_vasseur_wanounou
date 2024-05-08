@@ -1,18 +1,18 @@
 package fr.miage.m1.big_data_m1_23_24.services;
 
-import fr.miage.m1.big_data_m1_23_24.entity.randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
 
 import java.util.List;
 
 public interface RandonneService {
 
-    public randonne get(Long id);
+    public Randonne get(Long id);
 
-    public List<randonne> getAll();
+    public List<Randonne> getAll();
 
-    public randonne create(randonne author);
+    public Randonne create(Randonne author);
 
-    public randonne edit(randonne author);
+    public Randonne edit(Randonne author);
 
     public void delete(Long id);
 }
