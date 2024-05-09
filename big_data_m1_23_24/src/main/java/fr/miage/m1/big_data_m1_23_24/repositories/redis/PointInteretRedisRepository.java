@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface PointInteretRedisRepository extends CrudRepository<PointInteret, UUID> {
+public interface PointInteretRedisRepository extends CrudRepository<PointInteret, UUID>, PointInteretRepository {
 }

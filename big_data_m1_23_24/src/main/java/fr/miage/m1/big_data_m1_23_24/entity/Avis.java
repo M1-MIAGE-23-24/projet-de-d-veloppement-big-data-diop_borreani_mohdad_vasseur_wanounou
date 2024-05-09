@@ -7,6 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.UUID;
 
@@ -15,10 +17,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder // Lombok
-@Document(collation = "avis") // Mongo
+@Document(collection = "avis") // Mongo
+@RedisHash("avis") // Redis
 public class Avis {
 
     @Id
+    @Indexed
     private UUID uuid;
 
     private int av_id;
@@ -31,8 +35,9 @@ public class Avis {
     @ManyToOne
     @JoinColumn(name = "ra_id")
     private Randonne randonne;
+
+    public void setAvId(int id) {
+        this.av_id = id;
+    }
 }
 
-enum Rating {
-    ZERO, ONE, TWO, THREE, FOUR, FIVE
-}

@@ -2,24 +2,27 @@ package fr.miage.m1.big_data_m1_23_24.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.UUID;
 
-@Entity // JPA
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder // Lombok
-@Table(name = "randonne")
-@Document(collation = "randonne") //Mongo
+@Document(collection = "randonne") //Mongo
+@RedisHash("randonne") // Redis
 public class Randonne {
 
     @Id
-    @org.springframework.data.annotation.Id // MongoDB primary key
+    @Indexed
     private UUID uuid;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ra_id;
 
     private String ra_label;
@@ -42,5 +45,23 @@ public class Randonne {
     private int po_id;
 
     private int av_id;
+
+    // getters et setters
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setid(int id) {
+        this.ra_id = id;
+    }
+
+    public int getRa_id() {
+        return ra_id;
+    }
+
 }
 

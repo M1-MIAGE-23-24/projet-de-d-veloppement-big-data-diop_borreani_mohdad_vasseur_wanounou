@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder // Lombok
-@Document(collation = "pointInteret") // Mongo
+@Document(collection = "pointInteret") // Mongo
 @RedisHash("pointInteret") // Redis
 public class PointInteret {
 
@@ -22,15 +22,10 @@ public class PointInteret {
     @Indexed // Redis index for faster querying
     private UUID uuid;
 
-    private int po_id;
-    private GPS po_gps;
-    private String po_description;
-    private String po_lien_photo;
-
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int po_id;
 
-    //@Embedded
+    @Embedded
     private GPS po_gps;
 
     private String po_description;
@@ -39,6 +34,10 @@ public class PointInteret {
 
     @ManyToOne
     @JoinColumn(name = "ra_id")
-    private Randonne randonne;*/
+    private Randonne randonne;
+
+    public void setPoId(int id) {
+        this.po_id = id;
+    }
 }
 

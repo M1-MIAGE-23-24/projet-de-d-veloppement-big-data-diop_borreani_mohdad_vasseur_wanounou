@@ -12,5 +12,7 @@ Parfois je vois //JPA, ça sert à quoi ?
 
 Pour la connection à la base de données, le mieux est d'utiliser IntelliJ et se connecter directement, donc revoir la partie : configuration de connexion dans ``ressources : application.properties``.
 
+J'ai créé des scripts python qui permettent de générer les 100 000 données pour chaque table ou collection afin de les insérer dans les différentes BDD.
+Ces données se trouvent dans ressources->scripts.
 
 
