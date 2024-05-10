@@ -1,18 +1,25 @@
 package fr.miage.m1.big_data_m1_23_24.services;
 
-import fr.miage.m1.big_data_m1_23_24.entity.randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface RandonneService {
 
-    public randonne get(Long id);
+    public List<Randonne> getAll();
 
-    public List<randonne> getAll();
+    Optional<Randonne> get(UUID uuid);
 
-    public randonne create(randonne author);
+    public Randonne create(Randonne randonne);
 
-    public randonne edit(randonne author);
+    public Randonne edit(Randonne randonne);
 
-    public void delete(Long id);
+    void delete(UUID uuid);
+
+    List<Randonne> search(RandonneSearchCriteria criteria);
+
+
 }

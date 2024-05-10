@@ -1,0 +1,10 @@
+package fr.miage.m1.big_data_m1_23_24.repositories.redis;
+
+import fr.miage.m1.big_data_m1_23_24.entity.PointInteret;
+import fr.miage.m1.big_data_m1_23_24.repositories.PointInteretRepository;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.UUID;
+
+public interface PointInteretRedisRepository extends CrudRepository<PointInteret, UUID>, PointInteretRepository {
+}

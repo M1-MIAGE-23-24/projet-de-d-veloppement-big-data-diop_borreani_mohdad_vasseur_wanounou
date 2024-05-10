@@ -1,19 +1,30 @@
 package fr.miage.m1.big_data_m1_23_24.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
-@Entity // JPA
+import java.util.UUID;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder // Lombok
-@Table(name = "Avis") // JPA
+@Document(collection = "avis") // Mongo
+@RedisHash("avis") // Redis
 public class Avis {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Indexed
+    private UUID uuid;
+
     private int av_id;
 
     @Enumerated(EnumType.STRING)
@@ -23,9 +34,10 @@ public class Avis {
 
     @ManyToOne
     @JoinColumn(name = "ra_id")
-    private randonne randonne;
+    private Randonne randonne;
+
+    public void setAvId(int id) {
+        this.av_id = id;
+    }
 }
 
-enum Rating {
-    ZERO, ONE, TWO, THREE, FOUR, FIVE
-}
