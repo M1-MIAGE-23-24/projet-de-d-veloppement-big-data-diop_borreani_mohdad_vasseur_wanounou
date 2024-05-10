@@ -13,8 +13,13 @@ import java.util.UUID;
 @Service
 public class AvisMongoDBService implements AvisService {
 
-    @Autowired
+    //@Autowired
     private AvisMongoDBRepository avisMongoDBRepository;
+
+    @Autowired
+    public AvisMongoDBService(AvisMongoDBRepository avisMongoDBRepository) {
+        this.avisMongoDBRepository = avisMongoDBRepository;
+    }
 
     @Override
     public Optional<Avis> get(UUID uuid) {
