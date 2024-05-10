@@ -7,6 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;
 
-public interface AvisMongoDBRepository extends MongoRepository<Avis, UUID>, AvisRepository {
+public interface AvisMongoDBRepository extends MongoRepository<Avis, UUID>, AvisRepository, AvisMongoDBRepositoryCustom {
 
 }
