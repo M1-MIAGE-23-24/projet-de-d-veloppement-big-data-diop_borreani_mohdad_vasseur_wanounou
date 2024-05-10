@@ -2,6 +2,7 @@ package fr.miage.m1.big_data_m1_23_24.controllers.mongo;
 
 
 import fr.miage.m1.big_data_m1_23_24.entity.PointInteret;
+import fr.miage.m1.big_data_m1_23_24.entity.PointInteretSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.services.PointInteretService;
 import fr.miage.m1.big_data_m1_23_24.services.mongo.PointInteretMongoDBService;
 import jakarta.annotation.PostConstruct;
@@ -68,6 +69,12 @@ public class PointInteretMongoDBController {
     public ResponseEntity<?> deletePointInteret(@PathVariable UUID id) {
         pointInteretMongoDBService.delete(id);
         return ResponseEntity.ok().body("RPointInteret deleted successfully");
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<PointInteret>> searchPointInteret(@RequestBody PointInteretSearchCriteria criteria) {
+        List<PointInteret> results = pointInteretService.search(criteria);
+        return ResponseEntity.ok(results);
     }
 
     // Benchmarks pour la performance

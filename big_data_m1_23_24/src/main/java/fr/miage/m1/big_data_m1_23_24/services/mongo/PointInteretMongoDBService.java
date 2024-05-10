@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.services.mongo;
 
 import fr.miage.m1.big_data_m1_23_24.entity.PointInteret;
+import fr.miage.m1.big_data_m1_23_24.entity.PointInteretSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.mongo.PointInteretMongoDBRepository;
 import fr.miage.m1.big_data_m1_23_24.services.PointInteretService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class PointInteretMongoDBService implements PointInteretService {
     @Override
     public void delete(UUID uuid) {
         pointInteretMongoDBRepository.deleteById(uuid);
+    }
+
+    @Override
+    public List<PointInteret> search(PointInteretSearchCriteria criteria) {
+        return pointInteretMongoDBRepository.searchPointInteret(criteria);
     }
 
 }

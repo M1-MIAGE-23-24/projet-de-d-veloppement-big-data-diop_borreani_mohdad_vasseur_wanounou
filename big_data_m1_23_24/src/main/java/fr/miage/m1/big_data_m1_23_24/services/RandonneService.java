@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.services;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ public interface RandonneService {
     public Randonne edit(Randonne randonne);
 
     void delete(UUID uuid);
+
+    List<Randonne> search(RandonneSearchCriteria criteria);
 
 
 }

@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.controllers.mongo;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
 import fr.miage.m1.big_data_m1_23_24.services.mongo.RandonneMongoDBService;
 import jakarta.annotation.PostConstruct;
@@ -73,6 +74,12 @@ public class RandonneMongoDBController {
     public ResponseEntity<?> deleteRandonne(@PathVariable UUID id) {
         randonneMongoDBService.delete(id);
         return ResponseEntity.ok().body("Randonne deleted successfully");
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<Randonne>> searchRandonne(@RequestBody RandonneSearchCriteria criteria) {
+        List<Randonne> results = randonneService.search(criteria);
+        return ResponseEntity.ok(results);
     }
 
 

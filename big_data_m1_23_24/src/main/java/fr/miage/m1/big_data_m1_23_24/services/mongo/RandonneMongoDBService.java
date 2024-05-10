@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.services.mongo;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.mongo.RandonneMongoDBRepository;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,11 @@ public class RandonneMongoDBService implements RandonneService {
     @Override
     public void delete(UUID uuid) {
         randonneMongoDBRepository.deleteById(uuid);
+    }
+
+    @Override
+    public List<Randonne> search(RandonneSearchCriteria criteria) {
+        return randonneMongoDBRepository.searchRandonne(criteria);
     }
 
 }
