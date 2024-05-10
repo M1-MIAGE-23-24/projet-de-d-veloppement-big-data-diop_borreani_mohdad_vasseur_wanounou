@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AvisMongoDBService implements AvisService {
@@ -15,8 +17,8 @@ public class AvisMongoDBService implements AvisService {
     private AvisMongoDBRepository avisMongoDBRepository;
 
     @Override
-    public Avis get(int id) {
-        return avisMongoDBRepository.findByAvId(id).orElse(null);
+    public Optional<Avis> get(UUID uuid) {
+        return avisMongoDBRepository.findById(uuid);
     }
 
     @Override
@@ -35,12 +37,7 @@ public class AvisMongoDBService implements AvisService {
     }
 
     @Override
-    public void delete(int id) {
-        avisMongoDBRepository.deleteByAvId(id);
+    public void delete(UUID uuid) {
+        avisMongoDBRepository.deleteById(uuid);
     }
-
-    /*@Override
-    public List<Avis> searchByMessage(String message) {
-        return avisMongoDBRepository.findByAvMessageContaining(message);
-    }*/
 }

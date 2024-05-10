@@ -14,13 +14,4 @@ public interface PointInteretRepository {
     // Only possible for methods that are common to MongoDb and Redis repositories
     public List<PointInteret> findAll();
 
-    //List<PointInteret> findByPo_DescriptionContaining(String description);
-
-    //List<PointInteret> findByPoLienPhotoContaining(String photoLink);
-
-    //PointInteret savePointInteret(PointInteret pointInteret);
-
-    void deleteByPoId(int poId);
-
-    Optional<PointInteret> findByPoId(int poId);
 }

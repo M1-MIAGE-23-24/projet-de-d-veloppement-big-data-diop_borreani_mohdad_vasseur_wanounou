@@ -11,11 +11,4 @@ public interface AvisRepository {
 
     public List<Avis> findAll();
 
-    //List<Avis> findByAvMessageContaining(String av_message);
-
-    //Avis saveAvis(Avis avis);
-
-    void deleteByAvId(int avId);
-
-    Optional<Avis> findByAvId(int avId);
 }

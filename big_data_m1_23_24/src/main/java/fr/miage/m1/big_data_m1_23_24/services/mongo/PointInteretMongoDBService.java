@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PointInteretMongoDBService implements PointInteretService {
@@ -15,8 +17,8 @@ public class PointInteretMongoDBService implements PointInteretService {
     private PointInteretMongoDBRepository pointInteretMongoDBRepository;
 
     @Override
-    public PointInteret get(int id) {
-        return pointInteretMongoDBRepository.findByPoId(id).orElse(null);
+    public Optional<PointInteret> get(UUID uuid) {
+        return pointInteretMongoDBRepository.findById(uuid);
     }
 
     @Override
@@ -35,18 +37,8 @@ public class PointInteretMongoDBService implements PointInteretService {
     }
 
     @Override
-    public void delete(int id) {
-        pointInteretMongoDBRepository.deleteByPoId(id);
+    public void delete(UUID uuid) {
+        pointInteretMongoDBRepository.deleteById(uuid);
     }
-
-    /*@Override
-    public List<PointInteret> searchByDescription(String description) {
-        return pointInteretMongoDBRepository.findByPo_DescriptionContaining(description);
-    }*/
-
-    /*@Override
-    public List<PointInteret> searchByPhotoLink(String photoLink) {
-        return pointInteretMongoDBRepository.findByPoLienPhotoContaining(photoLink);
-    }*/
 
 }
