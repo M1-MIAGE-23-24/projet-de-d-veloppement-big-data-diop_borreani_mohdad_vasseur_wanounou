@@ -38,17 +38,8 @@ public class RandonneMongoDBService implements RandonneService {
     }
 
     @Override
-    public void delete(int ra_id) {
-        randonneMongoDBRepository.deleteById(ra_id);
+    public void delete(UUID uuid) {
+        randonneMongoDBRepository.deleteById(uuid);
     }
 
-    /*@Override
-    public List<Randonne> searchByLabel(String label) {
-        return randonneMongoDBRepository.findByRaLabelContaining(label);
-    }
-
-    @Override
-    public List<Randonne> searchByDifficulty(String difficulty) {
-        return randonneMongoDBRepository.findByRaDifficulte(difficulty);
-    }*/
 }

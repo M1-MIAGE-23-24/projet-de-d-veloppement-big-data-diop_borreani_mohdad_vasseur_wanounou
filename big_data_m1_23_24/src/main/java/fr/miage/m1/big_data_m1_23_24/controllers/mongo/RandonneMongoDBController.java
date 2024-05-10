@@ -18,9 +18,12 @@ public class RandonneMongoDBController {
 
     @Autowired
     private RandonneMongoDBService randonneMongoDBService;
+
+    @Autowired
     private RandonneService randonneService;
 
-    @PostMapping
+
+    @PostMapping("/")
     public Randonne createRandonne(@RequestBody Randonne randonne) {
         return randonneMongoDBService.create(randonne);
     }
@@ -34,25 +37,22 @@ public class RandonneMongoDBController {
         }
     }
 
-    @PutMapping("/{ra_id}")
-    public Randonne updateRandonne(@PathVariable int ra_id, @RequestBody Randonne randonne) {
-        randonne.setid(ra_id);
-        return randonneMongoDBService.edit(randonne);
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateRandonne(@PathVariable UUID id, @RequestBody Randonne updatedRandonne) {
+        Optional<Randonne> optionalRandonne = randonneMongoDBService.get(id);
+        if (optionalRandonne.isPresent()) {
+            updatedRandonne.setUuid(id);
+            Randonne savedRandonne = randonneMongoDBService.edit(updatedRandonne);
+            return ResponseEntity.ok(savedRandonne);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Randonne not found");
+        }
     }
 
-    @DeleteMapping("/{ra_id}")
-    public void deleteRandonne(@PathVariable int ra_id) {
-        randonneMongoDBService.delete(ra_id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteRandonne(@PathVariable UUID id) {
+        randonneMongoDBService.delete(id);
+        return ResponseEntity.ok().body("Randonne deleted successfully");
     }
-
-    /*@GetMapping("/search/label")
-    public List<Randonne> searchByLabel(@RequestParam String label) {
-        return randonneMongoDBService.searchByLabel(label);
-    }
-
-    @GetMapping("/search/difficulty")
-    public List<Randonne> searchByDifficulty(@RequestParam String difficulty) {
-        return randonneMongoDBService.searchByDifficulty(difficulty);
-    }*/
 
 }

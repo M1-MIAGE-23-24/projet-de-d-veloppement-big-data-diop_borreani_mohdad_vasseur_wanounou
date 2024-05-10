@@ -8,19 +8,15 @@ import java.util.UUID;
 
 public interface RandonneService {
 
-    //public Randonne get(int ra_id);
-
     public List<Randonne> getAll();
-
-    public Randonne create(Randonne author);
-
-    public Randonne edit(Randonne author);
-
-    public void delete(int ra_id);
 
     Optional<Randonne> get(UUID uuid);
 
-    //List<Randonne> searchByLabel(String label);
+    public Randonne create(Randonne randonne);
 
-    //List<Randonne> searchByDifficulty(String difficulty);
+    public Randonne edit(Randonne randonne);
+
+    void delete(UUID uuid);
+
+
 }

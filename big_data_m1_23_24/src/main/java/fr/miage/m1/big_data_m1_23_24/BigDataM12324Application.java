@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
@@ -91,9 +92,12 @@ public class BigDataM12324Application {
 
 			try {
 				// Lire le fichier JSON et convertir en liste d'objets Randonne
-				List<Randonne> randonnes = objectMapper.readValue(file, new TypeReference<List<Randonne>>() {});
-				List<Avis> avisList = objectMapper.readValue(avisFile, new TypeReference<List<Avis>>() {});
-				List<PointInteret> pointList = objectMapper.readValue(pointFile, new TypeReference<List<PointInteret>>() {});
+				List<Randonne> randonnes = objectMapper.readValue(file, new TypeReference<List<Randonne>>() {
+				});
+				List<Avis> avisList = objectMapper.readValue(avisFile, new TypeReference<List<Avis>>() {
+				});
+				List<PointInteret> pointList = objectMapper.readValue(pointFile, new TypeReference<List<PointInteret>>() {
+				});
 
 				// Enregistrer chaque Randonne dans MongoDB et Redis
 				for (Randonne randonne : randonnes) {
@@ -136,12 +140,14 @@ public class BigDataM12324Application {
 			System.out.println(randonneRedisRepository.findAll());
 			System.out.println(avisMongoDBRepository.findAll());
 			System.out.println(avisRedisRepository.findAll());*/
-			System.out.println("MongoDB Randonne Entries: " + randonneMongoDBRepository.findAll());
+			/*System.out.println("MongoDB Randonne Entries: " + randonneMongoDBRepository.findAll());
 			System.out.println("Redis Randonne Entries: " + randonneRedisRepository.findAll());
 			System.out.println("MongoDB Avis Entries: " + avisMongoDBRepository.findAll());
 			System.out.println("Redis Avis Entries: " + avisRedisRepository.findAll());
 			System.out.println("MongoDB Point Interet Entries: " + pointInteretMongoDBRepository.findAll());
 			System.out.println("Redis Point Interet Entries: " + pointInteretRedisRepository.findAll());
+
+			 */
 
 		};
 	}
@@ -178,7 +184,7 @@ public class BigDataM12324Application {
 	CommandLineRunner testGetRequest() {
 		return args -> {
 			// UUID of the Randonne to test
-			UUID uuidToTest = UUID.randomUUID(); // Remplacez par un uuid valide existant
+			UUID uuidToTest = UUID.fromString("ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"); // Remplacez par un uuid valide existant
 
 			// Use RestTemplate to send a GET request
 			RestTemplate restTemplate = new RestTemplate();
@@ -186,12 +192,65 @@ public class BigDataM12324Application {
 
 			try {
 				Randonne randonne = restTemplate.getForObject(baseUrl, Randonne.class);
-				System.out.println("Retrieved Randonne: " + randonne);
+				if (randonne != null) {
+					System.out.println("Retrieved Randonne: " + randonne.toString());
+				} else {
+					System.out.println("Randonne not found");
+				}
 			} catch (Exception e) {
 				System.err.println("Error retrieving Randonne: " + e.getMessage());
 			}
 		};
 	}
 
+	@Bean
+	CommandLineRunner testCreateEditDeleteRequest() {
+		return args -> {
+			RestTemplate restTemplate = new RestTemplate();
+			String baseUrl = "http://localhost:8080/randonne/mongo/";
+
+			// Créer une nouvelle randonnée avec un UUID valide
+			Randonne newRandonne = Randonne.builder()
+					.uuid(UUID.fromString("e4a1c660-75c6-453e-8e02-b3d2f4edc23a"))
+					.ra_id((int) (Math.random() * 100))
+					.ra_label("Test Label")
+					.ra_gpx(new GPS(40.7128, -74.0060))
+					.ra_description("Test description")
+					.ra_duree(120)
+					.ra_difficulte("Easy")
+					.ra_denivele(150)
+					.ra_distance(5.5)
+					.ra_boucle(true)
+					.po_id(1)
+					.av_id(1)
+					.build();
+
+			// Délai pour permettre au serveur de démarrer complètement
+			Thread.sleep(5000);
+
+			// Envoi de la requête POST pour créer la randonnée
+			ResponseEntity<Randonne> createResponse = restTemplate.postForEntity(baseUrl, newRandonne, Randonne.class);
+			if (createResponse.getStatusCode().is2xxSuccessful()) {
+				Randonne createdRandonne = createResponse.getBody();
+				if (createdRandonne != null) {
+					System.out.println("Created Randonne: " + createdRandonne.toString());
+
+					// Mettre à jour la randonnée créée
+					createdRandonne.setRa_label("Updated Label");
+					restTemplate.put(baseUrl + createdRandonne.getUuid(), createdRandonne);
+					System.out.println("Updated Randonne: " + createdRandonne.toString());
+
+					// UUID de la randonnée à supprimer
+					UUID uuidToDelete = UUID.fromString("f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e"); // Remplacez par un UUID valide existant
+
+					// Supprimer une randonnée spécifique
+					restTemplate.delete(baseUrl + uuidToDelete);
+					System.out.println("Deleted Randonne with UUID: " + uuidToDelete);
+				}
+			} else {
+				System.out.println("Failed to create Randonne: " + createResponse.getStatusCode());
+			}
+		};
+	}
 
 }

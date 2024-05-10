@@ -63,5 +63,23 @@ public class Randonne {
         return ra_id;
     }
 
+    @Override
+    public String toString() {
+        return "Randonne{" +
+                "uuid=" + uuid +
+                ", ra_id=" + ra_id +
+                ", ra_label='" + ra_label + '\'' +
+                ", ra_gpx=" + ra_gpx +
+                ", ra_description='" + ra_description + '\'' +
+                ", ra_duree=" + ra_duree +
+                ", ra_difficulte='" + ra_difficulte + '\'' +
+                ", ra_denivele=" + ra_denivele +
+                ", ra_distance=" + ra_distance +
+                ", ra_boucle=" + ra_boucle +
+                ", po_id=" + po_id +
+                ", av_id=" + av_id +
+                '}';
+    }
+
 }
 
