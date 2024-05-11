@@ -253,4 +253,46 @@ public class BigDataM12324Application {
 		};
 	}
 
+	@Bean
+	CommandLineRunner testCreateEditDeleteRequestAvisRedis() {
+		return args -> {
+			RestTemplate restTemplate = new RestTemplate();
+			String baseUrl = "http://localhost:8080/avis/redis/";
+
+			// Create a new Avis with a valid UUID
+			Avis newAvis = Avis.builder()
+					.uuid(UUID.fromString("e4a1c660-75c6-453e-8e02-b3d2f4edc23a"))
+					.av_id((int) (Math.random() * 100))
+					.av_etoile(Rating.FIVE)
+					.av_message("Great hike!")
+					.build();
+
+			// Delay to allow the server to fully start
+			Thread.sleep(5000);
+
+			// Send the POST request to create the Avis
+			ResponseEntity<Avis> createResponse = restTemplate.postForEntity(baseUrl, newAvis, Avis.class);
+			if (createResponse.getStatusCode().is2xxSuccessful()) {
+				Avis createdAvis = createResponse.getBody();
+				if (createdAvis != null) {
+					System.out.println("Created Avis: " + createdAvis.toString());
+
+					// Update the created Avis
+					createdAvis.setAv_message("Updated message");
+					restTemplate.put(baseUrl + createdAvis.getUuid(), createdAvis);
+					System.out.println("Updated Avis: " + createdAvis.toString());
+
+					// UUID of the Avis to delete
+					UUID uuidToDelete = UUID.fromString("f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e"); // Replace with an existing valid UUID
+
+					// Delete a specific Avis
+					restTemplate.delete(baseUrl + uuidToDelete);
+					System.out.println("Deleted Avis with UUID: " + uuidToDelete);
+				}
+			} else {
+				System.out.println("Failed to create Avis: " + createResponse.getStatusCode());
+			}
+		};
+	}
+
 }
