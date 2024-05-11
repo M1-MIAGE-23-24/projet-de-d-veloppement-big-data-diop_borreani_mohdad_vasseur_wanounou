@@ -27,7 +27,7 @@ export default class Style{
 .div1 {
   align-items: center;
   display: flex;
-  max-width: 300px;
+  max-width: 400px;
   flex-direction: column;
   background-color: #f4f4f4;
   padding: 20px;

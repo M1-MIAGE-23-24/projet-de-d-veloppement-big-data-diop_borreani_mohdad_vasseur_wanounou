@@ -10,7 +10,13 @@ class Page extends HTMLElement {
         return [];
     }
 
-    connectedCallback() {}
+    connectedCallback() {
+
+        this.shadow.getElementById("eee").addEventListener("click", 
+            () => {
+                console.log(this.shadow.getElementById("ttt").getValue());
+            });
+    }
     
     constructor(){
         super();

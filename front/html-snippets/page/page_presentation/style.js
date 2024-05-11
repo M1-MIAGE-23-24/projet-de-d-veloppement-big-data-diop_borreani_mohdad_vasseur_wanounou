@@ -17,15 +17,12 @@ export default class Style{
 
    
     .image {
+        object-fit: cover;
+        object-position: 0% 50%;
         width: 100%;
+        height: 300px;
     }
     </style>
     `
     }
 }
-/*
-        overflow: hidden;
-
-           
-
-*/

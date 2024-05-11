@@ -5,10 +5,11 @@
   <head>
     <meta charset="utf-8">
     <title>Big Data</title>
+    <link rel="shortcut icon" type="image/png" href="./data/favicon.jpeg"/>
 
     <!----------------- My  dependencies ----------------->
     <script>
-      let workInLocal = false;
+      let workInLocal = true;
       let host;
 
       if (workInLocal) {
@@ -81,29 +82,60 @@
                 {
                   "label":"Présentation du projet",
                   "route":"&lt;page-presentation&gt;&lt;/page-presentation&gt;",
-                  "typeRoute":"html"
+                  "typeRoute":"html",
+                  "type":"standardImage",
+                  "children": [
+                    {
+                      "link":"./data/collaborateurs.jpg",
+                      "label":"Présentation du projet",
+                      "typeRoute":"html",
+                      "route":"&lt;page-benchmarking&gt;&lt;/page-benchmarking&gt;"
+                    },
+                    {
+                      "link":"./data/collaborateurs.jpg",
+                      "label":"Présentation du projet",
+                      "typeRoute":"html",
+                      "route":"&lt;page-benchmarking&gt;&lt;/page-benchmarking&gt;"
+                    },
+                    {
+                      "link":"./data/collaborateurs.jpg",
+                      "label":"Présentation du projet",
+                      "typeRoute":"html",
+                      "route":"&lt;page-benchmarking&gt;&lt;/page-benchmarking&gt;"
+                    }
+                   
+                  
+                  ]
+
                 },
                 {
                   "label":"Interface API",
                   "route":"&lt;page-interface-api&gt;&lt;/page-interface-api&gt;",
-                  "typeRoute":"html"
+                  "typeRoute":"html",
+                  "children": []
                 },
                 {  
                   "label":"Benchmarking",
                   "route":"&lt;page-benchmarking&gt;&lt;/page-benchmarking&gt;",
-                  "typeRoute":"html"
+                  "typeRoute":"html",
+                  "children": []
                 },
                 {  
                   "label":"Analyse Benchmarking",
                   "route":"&lt;page-analyse-benchmark&gt;&lt;/page-analyse-benchmark&gt;",
-                  "typeRoute":"html"
+                  "typeRoute":"html",
+                  "children": [
+                    {
+                      "label":"Présentation du projet"
+                    }
+                  ]
                 }
               ],
               "footer": [
                 {
                   "label":"© 2024 - Tous droits réservés",
                   "route":"./html-snippets/page_mentions_legales.html",
-                  "typeRoute":"http"
+                  "typeRoute":"http"                
                 }
               ] 
             }
