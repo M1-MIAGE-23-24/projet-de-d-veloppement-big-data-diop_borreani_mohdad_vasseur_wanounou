@@ -307,4 +307,54 @@ public class BigDataM12324Application {
 		};
 	}
 
+	@Bean
+	CommandLineRunner testCreateEditDeleteRequestRedis(RandonneRedisRepository randonneRedisRepository) {
+		return args -> {
+			RestTemplate restTemplate = new RestTemplate();
+			String baseUrl = "http://localhost:8080/randonne/redis/";
+
+			// Create a new Randonne with a valid UUID
+			Randonne newRandonne = Randonne.builder()
+					.uuid(UUID.fromString("e4a1c660-75c6-453e-8e02-b3d2f4edc23a"))
+					.ra_id((int) (Math.random() * 100))
+					.ra_label("Test Label")
+					.ra_gpx(new GPS(40.7128, -74.0060))
+					.ra_description("Test description")
+					.ra_duree(120)
+					.ra_difficulte("Easy")
+					.ra_denivele(150)
+					.ra_distance(5.5)
+					.ra_boucle(true)
+					.po_id(1)
+					.av_id(1)
+					.build();
+
+			// Delay to allow the server to fully start
+			Thread.sleep(5000);
+
+			// Send the POST request to create the Randonne
+			ResponseEntity<Randonne> createResponse = restTemplate.postForEntity(baseUrl, newRandonne, Randonne.class);
+			if (createResponse.getStatusCode().is2xxSuccessful()) {
+				Randonne createdRandonne = createResponse.getBody();
+				if (createdRandonne != null) {
+					System.out.println("Created Randonne: " + createdRandonne.toString());
+
+					// Update the created Randonne
+					createdRandonne.setRa_label("Updated Label");
+					restTemplate.put(baseUrl + createdRandonne.getUuid(), createdRandonne);
+					System.out.println("Updated Randonne: " + createdRandonne.toString());
+
+					// UUID of the Randonne to delete
+					UUID uuidToDelete = UUID.fromString("f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e"); // Replace with an existing valid UUID
+
+					// Delete a specific Randonne
+					restTemplate.delete(baseUrl + uuidToDelete);
+					System.out.println("Deleted Randonne with UUID: " + uuidToDelete);
+				}
+			} else {
+				System.out.println("Failed to create Randonne: " + createResponse.getStatusCode());
+			}
+		};
+	}
+
 }
