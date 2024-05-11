@@ -295,4 +295,16 @@ public class BigDataM12324Application {
 		};
 	}
 
+	@Bean
+	CommandLineRunner startRedis(PointInteretRedisRepository pointInteretRedisRepository) {
+		return args -> {
+			try {
+				long count = pointInteretRedisRepository.count();
+				System.out.println("Redis is working correctly. Number of documents in PointInteret collection: " + count);
+			} catch (Exception e) {
+				System.out.println("There seems to be a problem with Redis: " + e.getMessage());
+			}
+		};
+	}
+
 }
