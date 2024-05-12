@@ -158,7 +158,6 @@ export default class Content{
             <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
           </div>
           <bt-container class="space"></bt-container>
-          <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
           <div class="paragraphe"><p>id</p></div>
           <bt-input jsonObjectString='{"label":"id"}'></bt-input>
           <div class="paragraphe"><p>Nom de la randonnée</p></div>
@@ -232,8 +231,6 @@ export default class Content{
           <bt-input jsonObjectString='{"label":"Nombre d étoile"}'></bt-input>
           <div class="paragraphe"><p>Message</p></div>
           <bt-input jsonObjectString='{"label":"Message"}'></bt-input>
-          <div class="paragraphe"><p>Rando ID</p></div>
-          <bt-input jsonObjectString='{"label":"Rando id"}'></bt-input>
           <bt-container class="space"></bt-container>
           <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
@@ -268,8 +265,6 @@ export default class Content{
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
         </div>
         <bt-container class="space"></bt-container>
-          <div class="paragraphe"><p>uuid</p></div>
-          <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
           <div class="paragraphe"><p>id</p></div>
           <bt-input jsonObjectString='{"label":"Avis id"}'></bt-input>
           <div class="paragraphe"><p>Nombre d'étoile</p></div>
@@ -334,8 +329,6 @@ export default class Content{
           <bt-input jsonObjectString='{"label":"Description"}'></bt-input>
           <div class="paragraphe"><p>Lien photo</p></div>
           <bt-input jsonObjectString='{"label":"Lien photo"}'></bt-input>
-          <div class="paragraphe"><p>Rando ID</p></div>
-          <bt-input jsonObjectString='{"label":"Rando ID"}'></bt-input>
           <bt-container class="space"></bt-container>            <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
@@ -359,8 +352,6 @@ export default class Content{
         <bt-input jsonObjectString='{"label":"Description"}'></bt-input>
         <div class="paragraphe"><p>Lien photo</p></div>
         <bt-input jsonObjectString='{"label":"Lien photo"}'></bt-input>
-        <div class="paragraphe"><p>Rando ID</p></div>
-        <bt-input jsonObjectString='{"label":"Rando ID"}'></bt-input>
         <bt-container class="space"></bt-container>               <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
       </div>
 
@@ -380,7 +371,7 @@ export default class Content{
       <bt-input jsonObjectString='{"label":"Description"}'></bt-input>
       <div class="paragraphe"><p>Lien photo</p></div>
       <bt-input jsonObjectString='{"label":"Lien photo"}'></bt-input>
-      <div class="paragraphe"><p>Rando ID</p></div>
+      <div class="paragraphe"><p>Rando uuid</p></div>
       <bt-input jsonObjectString='{"label":"Rando ID"}'></bt-input>
       <bt-container class="space"></bt-container>               <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
     </div>

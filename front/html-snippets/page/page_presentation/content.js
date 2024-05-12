@@ -72,7 +72,7 @@ export default class Content{
             </div>
             <div>
                 <h3>Date de fin</h3>
-                <p>-</p>
+                <p>16 mai 2024</p>
             </div>
             <div>
                 <h3>Technologies</h3>
