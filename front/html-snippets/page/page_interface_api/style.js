@@ -56,6 +56,33 @@ export default class Style{
 
 }
 
+bt-icon{
+  --bt-size: 20px;
+}
+
+#popupGlobal {
+  
+  display: none;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#popup {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 50vh;
+  background-color: white;
+  border-radius: 5px;
+}
+
 .space {
   --bt-height: 30px;
 }

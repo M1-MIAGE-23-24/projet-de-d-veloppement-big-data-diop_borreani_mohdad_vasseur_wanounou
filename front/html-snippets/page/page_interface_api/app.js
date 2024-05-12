@@ -11,10 +11,17 @@ class Page extends HTMLElement {
     }
 
     connectedCallback() {
-
-        this.shadow.getElementById("eee").addEventListener("click", 
+        this.shadow.getElementById("boutonLectureRandonnee").addEventListener("click", 
             () => {
                 console.log(this.shadow.getElementById("ttt").getValue());
+                this.shadow.getElementById("popupGlobal").style.display = "flex";
+
+            });
+
+        this.shadow.getElementById("popup1").addEventListener("click",
+            () => {
+                console.log("popup1");
+                this.shadow.getElementById("popupGlobal").style.display = "none";
             });
     }
     

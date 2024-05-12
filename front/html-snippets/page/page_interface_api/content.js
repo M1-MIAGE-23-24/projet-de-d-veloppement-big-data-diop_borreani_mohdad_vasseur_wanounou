@@ -13,6 +13,16 @@ export default class Content{
       "language": "language-mongodb"
     });
 
+    let supressionRandoMongo = JSON.stringify({
+      "code": encodeURIComponent("db.randonnees.deleteOne({\n\t_id: ObjectId('[valeur_de_l_id]')\n})"),
+      "language": "language-mongodb"
+    });
+
+    let supressionRandoRedis = JSON.stringify({
+      "code": encodeURIComponent("HDEL randonnees:[valeur_de_l_id]"),
+      "language": "language-mongodb"
+    });
+
 
 
 //db.randonnees.findOne({_id: ObjectId("ID_de_la_randonnée")})
@@ -42,16 +52,16 @@ export default class Content{
           <div class="paragraphe"><p>ID de la randonnée</p></div>
           <bt-input jsonObjectString='{"label":"ID de la randonnée"}'></bt-input>
           <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+          <div class="div6"><bt-button id="boutonLectureRandonnee" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
         <div class="div1">
           <h2>Supression d'une randonnée</h2>
           <div class="page_box">
             <p class="paragraphe2">MongoDb</p>
-            <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+            <bt-code-presentation jsonObjectString=${supressionRandoMongo}></bt-code-presentation>
             <p class="paragraphe2">Redis</p>
-            <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+            <bt-code-presentation jsonObjectString=${supressionRandoRedis}></bt-code-presentation>
           </div>
           <bt-container class="space"></bt-container>
           <div class="paragraphe"><p>ID de la randonnée</p></div>
@@ -139,6 +149,40 @@ export default class Content{
           <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
+        <div class="div1">
+            <h2>Recherche de randonnées</h2>
+            <div class="page_box">
+            <p class="paragraphe2">MongoDb</p>
+            <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+            <p class="paragraphe2">Redis</p>
+            <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+          </div>
+          <bt-container class="space"></bt-container>
+          <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
+          <div class="paragraphe"><p>id</p></div>
+          <bt-input jsonObjectString='{"label":"id"}'></bt-input>
+          <div class="paragraphe"><p>Nom de la randonnée</p></div>
+          <bt-input jsonObjectString='{"label":"Nom de la randonnée"}'></bt-input>
+          <div class="paragraphe"><p>Description</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Description"}'></bt-input>
+          <div class="paragraphe"><p>Durée</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Durée"}'></bt-input>
+          <div class="paragraphe"><p>Difficulté</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Difficulté"}'></bt-input>
+          <div class="paragraphe"><p>Dénivelé</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Dénivelé"}'></bt-input>
+          <div class="paragraphe"><p>Distance</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Distance"}'></bt-input>
+          <div class="paragraphe"><p>Boucle</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Boucle"}'></bt-input>
+          <div class="paragraphe"><p>Points d'interêts ID</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Point d interêt ID"}'></bt-input>
+          <div class="paragraphe"><p>Avis ID</p></div>
+          <bt-input id="ttt" jsonObjectString='{"label":"Avis ID"}'></bt-input>
+          <bt-container class="space"></bt-container>
+          <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+        </div>
+
         <!-- Avis -->
 
         <div class="div1">
@@ -203,6 +247,27 @@ export default class Content{
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
         </div>
         <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>id</p></div>
+          <bt-input jsonObjectString='{"label":"Avis id"}'></bt-input>
+          <div class="paragraphe"><p>Nombre d'étoile</p></div>
+          <bt-input jsonObjectString='{"label":"Nombre d étoile"}'></bt-input>
+          <div class="paragraphe"><p>Message</p></div>
+          <bt-input jsonObjectString='{"label":"Message"}'></bt-input>
+          <div class="paragraphe"><p>Rando ID</p></div>
+          <bt-input jsonObjectString='{"label":"Rando id"}'></bt-input>
+          <bt-container class="space"></bt-container>
+        <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+      </div>
+
+      <div class="div1">
+        <h2>Recherche d'avis</h2>
+        <div class="page_box">
+          <p class="paragraphe2">MongoDb</p>
+          <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+          <p class="paragraphe2">Redis</p>
+        <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        </div>
+        <bt-container class="space"></bt-container>
           <div class="paragraphe"><p>uuid</p></div>
           <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
           <div class="paragraphe"><p>id</p></div>
@@ -222,7 +287,9 @@ export default class Content{
       <div class="div1">
           <h2>Lecture d'un point d'interet</h2>
           <div class="page_box">
+          <p class="paragraphe2">MongoDb</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+          <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
           </div>
           <bt-container class="space"></bt-container>
@@ -234,7 +301,9 @@ export default class Content{
         <div class="div1">
         <h2>Supression d'un point d'interet</h2>
         <div class="page_box">
+        <p class="paragraphe2">MongoDb</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        <p class="paragraphe2">Redis</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
         </div>
         <bt-container class="space"></bt-container>
@@ -247,7 +316,9 @@ export default class Content{
       <div class="div1">
           <h2>Insertion d'un point d'interet</h2>
           <div class="page_box">
+          <p class="paragraphe2">MongoDb</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+          <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
           </div>
           <bt-container class="space"></bt-container>
@@ -268,16 +339,15 @@ export default class Content{
           <bt-container class="space"></bt-container>            <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
-      
-
       <div class="div1">
         <h2>Modification d'un point d'interet</h2>
         <div class="page_box">
+        <p class="paragraphe2">MongoDb</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        <p class="paragraphe2">Redis</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
         </div>
         <bt-container class="space"></bt-container>
-        <div class="paragraphe"><p>uuid</p></div>
         <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
         <div class="paragraphe"><p>id</p></div>
         <bt-input jsonObjectString='{"label":"id"}'></bt-input>
@@ -294,12 +364,34 @@ export default class Content{
         <bt-container class="space"></bt-container>               <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
       </div>
 
-
-
+      <div class="div1">
+      <h2>Recherche d'un point d'interet</h2>
+      <div class="page_box">
+      <p class="paragraphe2">MongoDb</p>
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      <p class="paragraphe2">Redis</p>
+      <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+      </div>
+      <bt-container class="space"></bt-container>
+      <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
+      <div class="paragraphe"><p>id</p></div>
+      <bt-input jsonObjectString='{"label":"id"}'></bt-input>
+      <div class="paragraphe"><p>Description</p></div>
+      <bt-input jsonObjectString='{"label":"Description"}'></bt-input>
+      <div class="paragraphe"><p>Lien photo</p></div>
+      <bt-input jsonObjectString='{"label":"Lien photo"}'></bt-input>
+      <div class="paragraphe"><p>Rando ID</p></div>
+      <bt-input jsonObjectString='{"label":"Rando ID"}'></bt-input>
+      <bt-container class="space"></bt-container>               <div class="div6"><bt-button jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+    </div>
       
       </div>
       </div>
-    
+
+      <!-- Popup -->
+      <div id="popupGlobal"><div id="popup">
+        <bt-icon id=popup1 jsonObjectString = '{"link":"https://upload.wikimedia.org/wikipedia/commons/1/18/Left_arrow.svg"}'></bt-icon>
+      </div></div>
     
     
     

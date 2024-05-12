@@ -10,7 +10,38 @@ class Page extends HTMLElement {
         return [];
     }
 
-    connectedCallback() {}
+    connectedCallback() {
+        this.shadow.getElementById("boutonLectureRandonnee").addEventListener("click", 
+        () => {
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+
+        });
+
+        this.shadow.getElementById("boutonEcritureRandonnee").addEventListener("click", 
+        () => {
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+
+        });
+
+        this.shadow.getElementById("boutonSupressionRandonnee").addEventListener("click", 
+        () => {
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+
+        });
+
+        this.shadow.getElementById("boutonModificationRandonnee").addEventListener("click", 
+        () => {
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+
+        });
+
+        this.shadow.getElementById("popup1").addEventListener("click",
+        () => {
+            console.log("popup1");
+            this.shadow.getElementById("popupGlobal").style.display = "none";
+        });
+
+    }
     
     constructor(){
         super();
@@ -21,5 +52,5 @@ class Page extends HTMLElement {
     }
 }
 
-customElements.define('page-bechmarking', Page);
+customElements.define('page-benchmarking', Page);
 
