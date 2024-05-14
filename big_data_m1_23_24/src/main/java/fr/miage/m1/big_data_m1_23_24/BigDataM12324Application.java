@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.UUID;
 
+
 @SpringBootApplication
 @EnableMongoRepositories(basePackages = "fr.miage.m1.big_data_m1_23_24.repositories.mongo") // Pour dire où se trouve les repositories mongo
 @EnableRedisRepositories(basePackages = "fr.miage.m1.big_data_m1_23_24.repositories.redis") // Pour dire où se trouve les repositories redis

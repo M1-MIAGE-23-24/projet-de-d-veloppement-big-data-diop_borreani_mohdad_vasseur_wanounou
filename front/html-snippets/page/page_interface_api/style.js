@@ -27,7 +27,7 @@ export default class Style{
 .div1 {
   align-items: center;
   display: flex;
-  max-width: 400px;
+  width: 400px;
   flex-direction: column;
   background-color: #f4f4f4;
   padding: 20px;
@@ -77,10 +77,11 @@ bt-icon{
 #popup {
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  height: 50vh;
+  width: 80vw;
+  height: 60vh;
   background-color: white;
   border-radius: 5px;
+  padding: 20px;
 }
 
 .space {
