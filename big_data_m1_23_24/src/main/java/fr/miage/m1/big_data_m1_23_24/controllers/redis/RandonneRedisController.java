@@ -74,5 +74,83 @@ public class RandonneRedisController {
         return ResponseEntity.ok().build();
     }
 
+    // Benchmarks pour la performance
+
+    @GetMapping("/benchmark/create")
+    public String benchmarkCreate() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            randonneService.create(Randonne.builder()
+                    .uuid(UUID.randomUUID())
+                    .ra_id(i)
+                    .ra_label("Randonne " + i)
+                    .ra_description("Description " + i)
+                    .ra_duree(120 + i)
+                    .ra_difficulte("Medium")
+                    .ra_denivele(500 + i)
+                    .ra_distance(10.5 + i)
+                    .ra_boucle(true)
+                    .po_id(i)
+                    .av_id(i)
+                    .build());
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark create: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/get")
+    public String benchmarkGet() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            randonneService.get(randonne.getUuid());
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark get: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/update")
+    public String benchmarkUpdate() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            randonne.setRa_description("Updated description " + i);
+            randonneService.edit(randonne);
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark update: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/delete")
+    public String benchmarkDelete() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            randonneService.delete(randonne.getUuid());
+            randonne = Randonne.builder()
+                    .uuid(UUID.randomUUID())
+                    .ra_id(i)
+                    .ra_label("Randonne " + i)
+                    .ra_description("Description " + i)
+                    .ra_duree(120 + i)
+                    .ra_difficulte("Medium")
+                    .ra_denivele(500 + i)
+                    .ra_distance(10.5 + i)
+                    .ra_boucle(true)
+                    .po_id(i)
+                    .av_id(i)
+                    .build();
+            randonneService.create(randonne);
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark delete: " + (endTime - startTime) + " ms";
+    }
+
+
 
 }

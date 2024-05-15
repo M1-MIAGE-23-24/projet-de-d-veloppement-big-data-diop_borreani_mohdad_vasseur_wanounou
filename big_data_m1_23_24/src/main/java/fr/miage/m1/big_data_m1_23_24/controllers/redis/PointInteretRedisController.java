@@ -67,4 +67,65 @@ public class PointInteretRedisController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/benchmark/create")
+    public String benchmarkCreate() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            pointInteretService.create(PointInteret.builder()
+                    .uuid(UUID.randomUUID())
+                    .po_id(i)
+                    .po_description("Point Interet " + i)
+                    .po_lien_photo("http://example.com/photo" + i + ".jpg")
+                    .build());
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark create: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/get")
+    public String benchmarkGet() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            pointInteretService.get(pointInteret.getUuid());
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark get: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/update")
+    public String benchmarkUpdate() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            pointInteret.setPo_description("Updated description " + i);
+            pointInteretService.edit(pointInteret);
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark update: " + (endTime - startTime) + " ms";
+    }
+
+    @GetMapping("/benchmark/delete")
+    public String benchmarkDelete() {
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000; i++) {
+            pointInteretService.delete(pointInteret.getUuid());
+            pointInteret = PointInteret.builder()
+                    .uuid(UUID.randomUUID())
+                    .po_id(i)
+                    .po_description("Point Interet " + i)
+                    .po_lien_photo("http://example.com/photo" + i + ".jpg")
+                    .build();
+            pointInteretService.create(pointInteret);
+        }
+
+        long endTime = System.currentTimeMillis();
+        return "Benchmark delete: " + (endTime - startTime) + " ms";
+    }
+
 }
