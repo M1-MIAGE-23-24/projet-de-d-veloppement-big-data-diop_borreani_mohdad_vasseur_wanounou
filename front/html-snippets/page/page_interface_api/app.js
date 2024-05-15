@@ -105,7 +105,7 @@ class Page extends HTMLElement {
     // -----------------------------------------------------------
     // Bouton Lecture Randonnée
     // -----------------------------------------------------------
-    this.shadow.getElementById("boutonLectureAvis").addEventListener("click", async () => {
+    this.shadow.getElementById("boutonLectureRandonnee").addEventListener("click", async () => {
       const id = this.shadow.getElementById("champUIIDLectureAvis").getValue();
       var data = "";
       // Résultat sur MongoDB
@@ -139,7 +139,7 @@ class Page extends HTMLElement {
     // -----------------------------------------------------------
     // Bouton Supression Randonnée
     // -----------------------------------------------------------
-    this.shadow.getElementById("boutonSupressionAvis").addEventListener("click", async () => {
+    this.shadow.getElementById("boutonSupressionRandonnee").addEventListener("click", async () => {
       const id = this.shadow.getElementById("champUIIDSupressionAvis").getValue();
       var data = "";
       // Résultat sur MongoDB
