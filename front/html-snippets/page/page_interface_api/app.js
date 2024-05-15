@@ -106,31 +106,32 @@ class Page extends HTMLElement {
     // Bouton Lecture Randonnée
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonLectureRandonnee").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champUIIDLectureAvis").getValue();
+      const id = this.shadow.getElementById("champIDLectureRandonnee").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
+        console.log(`http://localhost:8080/randonne/mongo/${id}`);
         const reponse = await fetch(`http://localhost:8080/randonne/mongo/${id}`,{
           method: "get",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
-        data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
+        data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br><br>`;
       }
       // Résultat sur Redis
       try {
-        const reponse = await fetch(`http://localhost:8080/randonne/redis/${id}<br>`, {
+        const reponse = await fetch(`http://localhost:8080/randonne/redis/${id}`, {
           method: "get",
         });
         if(!reponse.ok){
-          throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
+          throw new Error(`Erreur lors de la récupération des données : ${reponse.status}<br><br>`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br>`;} 
       catch (e) {
-        data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
+        data = data + `Redis : Erreur lors de la récupération des données: ${e}<br><br>`;
       }
       //
       this.shadow.getElementById("contentPopup").innerHTML = data;
@@ -140,31 +141,32 @@ class Page extends HTMLElement {
     // Bouton Supression Randonnée
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonSupressionRandonnee").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champUIIDSupressionAvis").getValue();
+      const id = this.shadow.getElementById("champIDLectureRandonnee").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
+        console.log(`http://localhost:8080/randonne/mongo/${id}`);
         const reponse = await fetch(`http://localhost:8080/randonne/mongo/${id}`,{
           method: "delete",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
-        data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
+        data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br><br>`;
       }
       // Résultat sur Redis
       try {
-        const reponse = await fetch(`http://localhost:8080/randonne/redis/${id}<br>`, {
+        const reponse = await fetch(`http://localhost:8080/randonne/redis/${id}`, {
           method: "delete",
         });
         if(!reponse.ok){
-          throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
+          throw new Error(`Erreur lors de la récupération des données : ${reponse.status}<br><br>`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br>`;} 
       catch (e) {
-        data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
+        data = data + `Redis : Erreur lors de la récupération des données: ${e}<br><br>`;
       }
       //
       this.shadow.getElementById("contentPopup").innerHTML = data;
@@ -203,7 +205,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -235,7 +237,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br>`;} 
       catch (e) {
         data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -247,16 +249,19 @@ class Page extends HTMLElement {
     // Bouton Modification Randonnée
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonModificationRandonnee").addEventListener("click", async () => {
+
       var data = "";
+      const id = this.shadow.getElementById("champUUIDModificationRandonnee").getValue();
+
       // Résultat sur MongoDB
       try {
-        const reponse = await fetch('http://localhost:8080/randonne/mongo/', {
+        const reponse = await fetch(`http://localhost:8080/randonne/mongo/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "uuid": this.shadow.getElementById("champUIIDModificationRandonnee").getValue(),
+            "uuid": this.shadow.getElementById("champUUIDModificationRandonnee").getValue(),
             "ra_id": parseInt(this.shadow.getElementById("champIDModificationRandonnee").getValue()),
             "ra_label": this.shadow.getElementById("champNomModificationRandonnee").getValue(),
             "ra_gpx": {
@@ -276,19 +281,19 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
       // Résultat sur Redis
       try {
-        const reponse = await fetch('http://localhost:8080/randonne/redis/', {
+        const reponse = await fetch(`http://localhost:8080/randonne/mongo/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "uuid": this.shadow.getElementById("champUIIDModificationRandonnee").getValue(),
+            "uuid": this.shadow.getElementById("champUUIDModificationRandonnee").getValue(),
             "ra_id": parseInt(this.shadow.getElementById("champIDModificationRandonnee").getValue()),
             "ra_label": this.shadow.getElementById("champNomModificationRandonnee").getValue(),
             "ra_gpx": {
@@ -308,7 +313,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br>`;} 
       catch (e) {
         data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -344,7 +349,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -383,7 +388,7 @@ class Page extends HTMLElement {
     // Bouton Lecture d'avis
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonLectureAvis").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champIDLectureAvis").getValue();
+      const id = this.shadow.getElementById("champUIIDLectureAvis").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
@@ -393,7 +398,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -405,7 +410,7 @@ class Page extends HTMLElement {
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br><br>`;} 
       catch (e) {
         data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -417,29 +422,29 @@ class Page extends HTMLElement {
     // Bouton Supression d'avis
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonSupressionAvis").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champIDSupressionAvis").getValue();
+      const id = this.shadow.getElementById("champUIIDSupressionAvis").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
         const reponse = await fetch(`http://localhost:8080/avis/mongo/${id}`,{
-          method: "DELETE",
+          method: "delete",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
       // Résultat sur Redis
       try {
         const reponse = await fetch(`http://localhost:8080/avis/redis/${id}<br>`, {
-          method: "DELETE",
+          method: "delete",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br><br>`;} 
       catch (e) {
         data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
       }
@@ -554,38 +559,37 @@ class Page extends HTMLElement {
     // -----------------------------------------------------------
     // Bouton Lecture de point d'intérêt
     // -----------------------------------------------------------
-    this.shadow.getElementById("boutonLecturePointInteret").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champUUIDLecturePointInteret").getValue();
+     this.shadow.getElementById("boutonLecturePointInteret").addEventListener("click", async () => {
+      const id = this.shadow.getElementById("champUIIDPointInteret").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
-        const reponse = await fetch(`http://localhost:8080/pointinteret/mongo/${id}`,{
+        const reponse = await fetch(`http://localhost:8080/PointInteret/mongo/${id}`,{
           method: "get",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Mongo : ${JSON.stringify(data)}`;
+        data = data + `Mongo : ${await reponse.text()}<br><br>`;
       } catch (e) {
         data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br>`;
       }
       // Résultat sur Redis
       try {
-        const reponse = await fetch(`http://localhost:8080/pointinteret/redis/${id}<br>`, {
+        const reponse = await fetch(`http://localhost:8080/avis/redis/${id}<br>`, {
           method: "get",
         });
         if(!reponse.ok){
           throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
         }
-        data = data + `Redis : ${JSON.stringify(data)}<br>`;} 
+        data = data + `Redis : ${await reponse.text()}<br><br>`;} 
       catch (e) {
         data = data + `Redis : Erreur lors de la récupération des données: ${e}<br>`;
       }
       //
       this.shadow.getElementById("contentPopup").innerHTML = data;
       this.shadow.getElementById("popupGlobal").style.display = "flex";
-    }
-    );
+    });
     // -----------------------------------------------------------
     // Bouton Supression de point d'intérêt
     // -----------------------------------------------------------
@@ -748,7 +752,6 @@ class Page extends HTMLElement {
 
 
 
-        
         this.shadow.getElementById("popup1").addEventListener("click",
             () => {
                 this.shadow.getElementById("popupGlobal").style.display = "none";

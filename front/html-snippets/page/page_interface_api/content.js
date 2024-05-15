@@ -6,23 +6,23 @@ export default class Content{
   content(){
 
     let lectureRandoMongo = JSON.stringify({
-      "code": encodeURIComponent("curl -X GET\nhttp://localhost:8080/randonne/mongo/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
+      "code": encodeURIComponent("curl -X GET \\\n\thttp://localhost:8080/randonne/mongo/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
       "language": "language-mongodb"
     });
 
     let lectureRandoRedis = JSON.stringify({
-      "code": encodeURIComponent("curl -X GET\nhttp://localhost:8080/randonne/redis/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
+      "code": encodeURIComponent("curl -X GET \\\n\thttp://localhost:8080/randonne/redis/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
       "language": "language-mongodb"
     });
     //
 
     let supressionRandoMongo = JSON.stringify({
-      "code": encodeURIComponent("curl -X DELETE\nhttp://localhost:8080/randonne/mongo/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
+      "code": encodeURIComponent("curl -X DELETE \\\n\thttp://localhost:8080/randonne/mongo/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
       "language": "language-mongodb"
     });
 
     let supressionRandoRedis = JSON.stringify({
-      "code": encodeURIComponent("curl -X DELETE\nhttp://localhost:8080/randonne/redis/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
+      "code": encodeURIComponent("curl -X DELETE \\\n\thttp://localhost:8080/randonne/redis/ca4c2cb3-af62-49d2-97e9-c4abbb8b2974"),
       "language": "language-mongodb"
     });
 
@@ -37,12 +37,12 @@ export default class Content{
     });
 
     let modificationRandoMongo = JSON.stringify({
-      "code": encodeURIComponent("curl -X PUT http://localhost:8080/randonne/mongo/ -H \"Content-Type: application/json\" -d '{\n\t\"uuid\": \"f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e\",\n\t\"ra_id\": 101,\n\t\"ra_label\": \"New Test Randonne\",\n\t\"ra_gpx\": {\n\t\t\"lon\": 40.7128,\n\t\t\"lat\": -74.0060\n},\n\t\"ra_description\": \"Test description\",\n\t\"ra_duree\": 120,\n\t\"ra_difficulte\": \"Easy\",\n\t\"ra_denivele\": 150,\n\t\"ra_distance\": 5.5,\n\t\"ra_boucle\": true,\n\t\"po_id\": 1,\n\"av_id\": 1\n\}'"),
+      "code": encodeURIComponent("curl -X PUT http://localhost:8080/randonne/mongo/f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e -H \"Content-Type: application/json\" -d '{\n\t\"uuid\": \"f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e\",\n\t\"ra_id\": 101,\n\t\"ra_label\": \"New Test Randonne\",\n\t\"ra_gpx\": {\n\t\t\"lon\": 40.7128,\n\t\t\"lat\": -74.0060\n},\n\t\"ra_description\": \"Test description\",\n\t\"ra_duree\": 120,\n\t\"ra_difficulte\": \"Easy\",\n\t\"ra_denivele\": 150,\n\t\"ra_distance\": 5.5,\n\t\"ra_boucle\": true,\n\t\"po_id\": 1,\n\"av_id\": 1\n\}'"),
       "language": "language-mongodb"
     });
 
     let modificationRandoRedis = JSON.stringify({
-      "code": encodeURIComponent("curl -X PUT http://localhost:8080/randonne/redis/ -H \"Content-Type: application/json\" -d '{\n\t\"uuid\": \"f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e\",\n\t\"ra_id\": 101,\n\t\"ra_label\": \"New Test Randonne\",\n\t\"ra_gpx\": {\n\t\t\"lon\": 40.7128,\n\t\t\"lat\": -74.0060\n},\n\t\"ra_description\": \"Test description\",\n\t\"ra_duree\": 120,\n\t\"ra_difficulte\": \"Easy\",\n\t\"ra_denivele\": 150,\n\t\"ra_distance\": 5.5,\n\t\"ra_boucle\": true,\n\t\"po_id\": 1,\n\"av_id\": 1\n\}'"),
+      "code": encodeURIComponent("curl -X PUT http://localhost:8080/randonne/redis/f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e -H \"Content-Type: application/json\" -d '{\n\t\"uuid\": \"f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e\",\n\t\"ra_id\": 101,\n\t\"ra_label\": \"New Test Randonne\",\n\t\"ra_gpx\": {\n\t\t\"lon\": 40.7128,\n\t\t\"lat\": -74.0060\n},\n\t\"ra_description\": \"Test description\",\n\t\"ra_duree\": 120,\n\t\"ra_difficulte\": \"Easy\",\n\t\"ra_denivele\": 150,\n\t\"ra_distance\": 5.5,\n\t\"ra_boucle\": true,\n\t\"po_id\": 1,\n\"av_id\": 1\n\}'"),
       "language": "language-curl"
     });
 
@@ -84,6 +84,16 @@ export default class Content{
     let insertionAvisRedis = JSON.stringify({
       "code": encodeURIComponent("curl -X POST http://localhost:8080/avis/redis/ -H \"Content-Type: application/json\" -d '{\n\t\"uuid\": \"f91bbdb5-2335-4f0f-8c5c-4d5cb5e6b98e\",\n\t\"av_id\": 101,\n\t\"av_nb_etoile\": 5,\n\t\"av_message\": \"Test avis\",\n\t\"ra_id\": 1\n\}'"),
       "language": "language-curl"
+    });
+
+    let modificationAvisMongo = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET\n\thttp://localhost:8080/avis/mongo/4c972246-d7ad-4140-8935-e22c80e7be"),
+      "language": "language-mongodb"
+    });
+
+    let modificationAvisRedis = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET\n\thttp://localhost:8080/avis/mongo/4c972246-d7ad-4140-8935-e22c80e7be"),
+      "language": "language-mongodb"
     });
 
 
@@ -276,7 +286,7 @@ export default class Content{
         </div>
 
         <div class="div1">
-          <h2>Insertion d'un avis</h2>
+          <h2>Insertion d'un avis (old???)</h2>
           <div class="page_box">
             <p class="paragraphe2">MongoDb</p>
             <bt-code-presentation jsonObjectString=${insertionAvisMongo}></bt-code-presentation>
@@ -297,7 +307,7 @@ export default class Content{
         </div>
 
       <div class="div1">
-        <h2>Modification d'un avis</h2>
+        <h2>Modification d'un avis (old???)</h2>
         <div class="page_box">
           <p class="paragraphe2">MongoDb</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
@@ -317,11 +327,31 @@ export default class Content{
         <div class="div6"><bt-button id='boutonModificationAvis' jsonObjectString='{"label":"Lancer"}'></bt-button></div>
       </div>
       
+      <div class="div1">
+        <h2>Recherche d'un avis (old???)</h2>
+        <div class="page_box">
+          <p class="paragraphe2">MongoDb</p>
+          <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+          <p class="paragraphe2">Redis</p>
+        <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        </div>
+        <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>id</p></div>
+          <bt-input id='champIDModificationAvis' jsonObjectString='{"label":"Avis id"}'></bt-input>
+          <div class="paragraphe"><p>Nombre d'étoile</p></div>
+          <bt-input id='champNombreEtoileModificationAvis' jsonObjectString='{"label":"Nombre d étoile"}'></bt-input>
+          <div class="paragraphe"><p>Message</p></div>
+          <bt-input id='champMessageModificationAvis' jsonObjectString='{"label":"Message"}'></bt-input>
+          <div class="paragraphe"><p>Rando ID</p></div>
+          <bt-input id='champRandoIDModificationAvis' jsonObjectString='{"label":"Rando id"}'></bt-input>
+          <bt-container class="space"></bt-container>
+        <div class="div6"><bt-button id='boutonModificationAvis' jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+      </div>
 
       <!-- Point d'interet -->
 
       <div class="div1">
-          <h2>Lecture d'un point d'interet</h2>
+          <h2>Lecture d'un point d'interet (old???)</h2>
           <div class="page_box">
           <p class="paragraphe2">MongoDb</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
@@ -335,7 +365,7 @@ export default class Content{
         </div>
 
         <div class="div1">
-        <h2>Supression d'un point d'interet</h2>
+        <h2>Supression d'un point d'interet (old???)</h2>
         <div class="page_box">
         <p class="paragraphe2">MongoDb</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
@@ -350,7 +380,7 @@ export default class Content{
       </div>
 
       <div class="div1">
-          <h2>Insertion d'un point d'interet</h2>
+          <h2>Insertion d'un point d'interet (old???)</h2>
           <div class="page_box">
           <p class="paragraphe2">MongoDb</p>
           <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
@@ -374,7 +404,30 @@ export default class Content{
         </div>
 
       <div class="div1">
-        <h2>Modification d'un point d'interet</h2>
+        <h2>Modification d'un point d'interet (old???)</h2>
+        <div class="page_box">
+        <p class="paragraphe2">MongoDb</p>
+        <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        <p class="paragraphe2">Redis</p>
+        <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
+        </div>
+        <bt-container class="space"></bt-container>
+        <bt-input jsonObjectString='{"label":"uuid"}'></bt-input>
+        <div class="paragraphe"><p>id</p></div>
+        <bt-input jsonObjectString='{"label":"id"}'></bt-input>
+        <div class="paragraphe"><p>Longitude</p></div>
+        <bt-input jsonObjectString='{"label":"Longitude"}'></bt-input>
+        <div class="paragraphe"><p>Latitude</p></div>
+        <bt-input jsonObjectString='{"label":"Latitude"}'></bt-input>
+        <div class="paragraphe"><p>Description</p></div>
+        <bt-input jsonObjectString='{"label":"Description"}'></bt-input>
+        <div class="paragraphe"><p>Lien photo</p></div>
+        <bt-input jsonObjectString='{"label":"Lien photo"}'></bt-input>
+        <bt-container class="space"></bt-container><div class="div6"><bt-button id='boutonModificationPointInteret' jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+      </div>
+
+      <div class="div1">
+        <h2>Recherche d'un point d'interet (old???)</h2>
         <div class="page_box">
         <p class="paragraphe2">MongoDb</p>
         <bt-code-presentation jsonObjectString='{"code":"&lt;div&gt;Hello, world!&lt;/div&gt;","language": "language-html"}'></bt-code-presentation>
