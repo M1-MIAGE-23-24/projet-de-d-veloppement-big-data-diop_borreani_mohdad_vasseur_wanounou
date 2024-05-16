@@ -39,5 +39,9 @@ public class PointInteret {
     public void setPoId(int id) {
         this.po_id = id;
     }
+
+    public String getRandonne_uuid() {
+        return uuid.toString();
+    }
 }
 

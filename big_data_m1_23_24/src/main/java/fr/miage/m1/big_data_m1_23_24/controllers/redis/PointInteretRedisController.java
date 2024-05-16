@@ -1,9 +1,9 @@
 package fr.miage.m1.big_data_m1_23_24.controllers.redis;
 
 import fr.miage.m1.big_data_m1_23_24.entity.PointInteret;
+import fr.miage.m1.big_data_m1_23_24.entity.PointInteretSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.PointInteretRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.PointInteretService;
-import fr.miage.m1.big_data_m1_23_24.services.mongo.PointInteretMongoDBService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,6 +64,12 @@ public class PointInteretRedisController {
     public ResponseEntity<?> deletePointInteret(@PathVariable UUID id) {
         pointInteretService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<PointInteret>> searchPointInteret(@RequestBody PointInteretSearchCriteria criteria) {
+        List<PointInteret> results = pointInteretService.search(criteria);
+        return ResponseEntity.ok(results);
     }
 
     // Benchmarks pour test de performance

@@ -70,9 +70,13 @@ public class AvisMongoDBController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<Avis>> searchAvis(@RequestBody AvisSearchCriteria criteria) {
-        List<Avis> results = avisService.search(criteria);
-        return ResponseEntity.ok(results);
+    public ResponseEntity<?> searchAvis(@RequestBody AvisSearchCriteria criteria) {
+        try {
+            List<Avis> results = avisService.search(criteria);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error searching Avis: " + e.getMessage());
+        }
     }
 
     // Benchmarks pour test de performance

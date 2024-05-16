@@ -39,5 +39,9 @@ public class Avis {
     public void setAvId(int id) {
         this.av_id = id;
     }
+
+    public String getRandonne_uuid() {
+        return uuid.toString();
+    }
 }
 
