@@ -67,7 +67,7 @@ export default class Style{
     }
     
     #popupGlobal {
-      
+  
       display: none;
       z-index: 1000;
       position: fixed;
@@ -81,13 +81,23 @@ export default class Style{
     }
     
     #popup {
+      overflow-x: auto;
       display: flex;
       flex-direction: column;
-      width: 50vw;
-      height: 50vh;
+      width: 80vw;
+      height: 60vh;
       background-color: white;
       border-radius: 5px;
+      padding: 20px;
     }
+    
+    .contentPopup {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: black;
+
+    }
+
     
     .space {
       --bt-height: 30px;
