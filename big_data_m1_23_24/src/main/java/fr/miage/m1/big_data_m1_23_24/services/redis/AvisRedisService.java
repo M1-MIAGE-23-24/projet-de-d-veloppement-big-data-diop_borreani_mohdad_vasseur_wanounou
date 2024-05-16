@@ -1,10 +1,8 @@
 package fr.miage.m1.big_data_m1_23_24.services.redis;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Avis;
-import fr.miage.m1.big_data_m1_23_24.entity.AvisSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.AvisRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.AvisService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +45,5 @@ public class AvisRedisService implements AvisService {
         avisRedisRepository.deleteById(uuid);
     }
 
-    @Override
-    public List<Avis> search(AvisSearchCriteria criteria) {
-        return avisRedisRepository.searchAvis(criteria);
-    }
 
 }

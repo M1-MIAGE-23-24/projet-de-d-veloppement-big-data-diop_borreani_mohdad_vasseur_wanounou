@@ -4,6 +4,7 @@ import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
 import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,6 +21,8 @@ public interface RandonneService {
     void delete(UUID uuid);
 
     List<Randonne> search(RandonneSearchCriteria criteria);
+
+    List<Map<String, Object>> findRandonneWithPointInteret();
 
 
 }
