@@ -75,6 +75,7 @@ bt-icon{
 }
 
 #popup {
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   width: 80vw;
