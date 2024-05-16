@@ -132,7 +132,22 @@ export default class Content{
       "language": "language-mongodb"
     });
 
+    // ----------------------------------------------
 
+    var infoMongodb = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET http://localhost:8080/memory/mongodb"),
+      "language": "language-mongodb"
+    });
+
+    var infoRedis = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET http://localhost:8080/memory/redis"),
+      "language": "language-mongodb"
+    });
+
+
+
+
+    
     return  ` 
 
         <div class="div3">
@@ -270,6 +285,21 @@ export default class Content{
           <div class="div6"><bt-button id="boutonBenchmarkPointInteretCreate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
+        <!-- --------------------------------------------------------------------------------------------- -->
+
+        <div class="div1">
+          <h2>Informations sur la base de données MONGO DB</h2>
+          <bt-code-presentation jsonObjectString=${infoMongodb}></bt-code-presentation>
+          <bt-container class="space"></bt-container>
+          <div class="div6"><bt-button id="boutonInfoMongodb" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+        </div>
+
+        <div class="div1">
+          <h2>Informations sur la base de données MONGO REDIS</h2>
+          <bt-code-presentation jsonObjectString=${infoRedis}></bt-code-presentation>
+          <bt-container class="space"></bt-container>
+          <div class="div6"><bt-button id="boutonInfoRedis" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+        </div>
 
 
 

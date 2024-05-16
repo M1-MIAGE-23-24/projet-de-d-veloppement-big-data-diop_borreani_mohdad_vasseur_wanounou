@@ -243,7 +243,46 @@ class Page extends HTMLElement {
             this.shadow.getElementById("contentPopup").innerHTML =  data;
             this.shadow.getElementById("popupGlobal").style.display = "flex";
         });
-
+        // -----------------------------------------------------------
+        // [info]
+        // -----------------------------------------------------------
+        this.shadow.getElementById("boutonInfoMongodb").addEventListener("click", async () => {
+            var data = "";
+            // Résultat 
+            try {
+                const reponse = await fetch(` http://localhost:8080/memory/mongodb
+                `,{method: "get",});
+                if(!reponse.ok){
+                    throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
+                }
+                data = data + `Mongo : ${await reponse.text()}<br><br>`;
+            } catch (e) {
+                data = data + `Mongo : Erreur lors de la récupération des données: ${e}<br><br>`;
+            }            
+            //
+            this.shadow.getElementById("contentPopup").innerHTML =  data;
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+        });
+        // -----------------------------------------------------------
+        // [info]
+        // -----------------------------------------------------------
+        this.shadow.getElementById("boutonInfoRedis").addEventListener("click", async () => {
+            var data = "";
+            // Résultat 
+            try {
+                const reponse = await fetch(` http://localhost:8080/memory/redis
+                `,{method: "get",});
+                if(!reponse.ok){
+                    throw new Error(`Erreur lors de la récupération des données : ${reponse.status}`);
+                }
+                data = data + `Redis : ${await reponse.text()}<br><br>`;
+            } catch (e) {
+                data = data + `Redis : Erreur lors de la récupération des données: ${e}<br><br>`;
+            }            
+            //
+            this.shadow.getElementById("contentPopup").innerHTML =  data;
+            this.shadow.getElementById("popupGlobal").style.display = "flex";
+        });
 
 
 
