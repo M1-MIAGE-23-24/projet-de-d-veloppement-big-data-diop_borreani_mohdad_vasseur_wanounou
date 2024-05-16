@@ -80,7 +80,7 @@ public class AvisRedisController {
         }
 
         long endTime = System.currentTimeMillis();
-        return "Benchmark create : " + (endTime - startTime) + " ms";
+        return "Benchmark mean time for create 1000 avis : " + (endTime - startTime) + " ms";
     }
 
     @GetMapping("/benchmark/get")
@@ -92,7 +92,7 @@ public class AvisRedisController {
         }
 
         long endTime = System.currentTimeMillis();
-        return "Benchmark get : " + (endTime - startTime) + " ms";
+        return "Benchmark mean time for get 1000 avis : " + (endTime - startTime) + " ms";
     }
 
     @GetMapping("/benchmark/update")
@@ -105,7 +105,7 @@ public class AvisRedisController {
         }
 
         long endTime = System.currentTimeMillis();
-        return "Benchmark update : " + (endTime - startTime) + " ms";
+        return "Benchmark mean time for update 1000 avis : " + (endTime - startTime) + " ms";
     }
 
     @GetMapping("/benchmark/delete")
@@ -124,6 +124,6 @@ public class AvisRedisController {
         }
 
         long endTime = System.currentTimeMillis();
-        return "Benchmark delete : " + (endTime - startTime) + " ms";
+        return "Benchmark mean time for delete 1000 avis: " + (endTime - startTime) + " ms";
     }
 }
