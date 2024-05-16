@@ -41,9 +41,10 @@ public class PointInteretRedisService implements PointInteretService {
         pointInteretRedisRepository.deleteById(uuid);
     }
 
+
     @Override
     public List<PointInteret> search(PointInteretSearchCriteria criteria) {
-        return null;
+        return pointInteretRedisRepository.searchPointInteretRedis(criteria);
     }
 
 

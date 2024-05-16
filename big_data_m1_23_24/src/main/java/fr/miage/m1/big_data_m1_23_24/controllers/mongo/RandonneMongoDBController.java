@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.controllers.mongo;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
 import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
 import fr.miage.m1.big_data_m1_23_24.services.mongo.RandonneMongoDBService;
@@ -10,9 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/randonne/mongo")
@@ -83,81 +82,107 @@ public class RandonneMongoDBController {
     }
 
 
-    // Benchmarks pour la performance
+    // Benchmarks pour test de performance
 
     @GetMapping("/benchmark/create")
-    public String benchmarkCreate() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            randonneService.create(Randonne.builder()
-                    .uuid(UUID.randomUUID())
-                    .ra_id(i)
-                    .ra_label("Randonne " + i)
-                    .ra_description("Description " + i)
-                    .ra_duree(120 + i)
-                    .ra_difficulte("Medium")
-                    .ra_denivele(500 + i)
-                    .ra_distance(10.5 + i)
-                    .ra_boucle(true)
-                    .po_id(i)
-                    .av_id(i)
-                    .build());
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark create: " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkCreate() {
+        List<Long> times = benchmarkOperation(1000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/get")
-    public String benchmarkGet() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            randonneService.get(randonne.getUuid());
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark get: " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkGet() {
+        List<Long> times = benchmarkOperation(1000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/update")
-    public String benchmarkUpdate() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            randonne.setRa_description("Updated description " + i);
-            randonneService.edit(randonne);
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark update: " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkUpdate() {
+        List<Long> times = benchmarkOperation(1000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/delete")
-    public String benchmarkDelete() {
-        long startTime = System.currentTimeMillis();
+    public ResponseEntity<Map<String, Long>> benchmarkDelete() {
+        List<Long> times = benchmarkOperation(1000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
 
-        for (int i = 0; i < 1000; i++) {
-            randonneService.delete(randonne.getUuid());
-            randonne = Randonne.builder()
-                    .uuid(UUID.randomUUID())
-                    .ra_id(i)
-                    .ra_label("Randonne " + i)
-                    .ra_description("Description " + i)
-                    .ra_duree(120 + i)
-                    .ra_difficulte("Medium")
-                    .ra_denivele(500 + i)
-                    .ra_distance(10.5 + i)
-                    .ra_boucle(true)
-                    .po_id(i)
-                    .av_id(i)
-                    .build();
-            randonneService.create(randonne);
+    private List<Long> benchmarkOperation(int count, String operation) {
+        List<Long> times = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            long startTime = System.nanoTime();
+            switch (operation) {
+                case "create":
+                    randonneService.create(Randonne.builder()
+                            .uuid(UUID.randomUUID())
+                            .ra_id(i)
+                            .ra_label("Randonne " + i)
+                            .ra_description("Description " + i)
+                            .ra_duree(120 + i)
+                            .ra_difficulte("Medium")
+                            .ra_denivele(500 + i)
+                            .ra_distance(10.5 + i)
+                            .ra_boucle(true)
+                            .po_id(i)
+                            .av_id(i)
+                            .build());
+                    break;
+                case "get":
+                    randonneService.get(randonne.getUuid());
+                    break;
+                case "update":
+                    randonne.setRa_description("Updated description " + i);
+                    randonneService.edit(randonne);
+                    break;
+                case "delete":
+                    randonneService.delete(randonne.getUuid());
+                    randonne = Randonne.builder()
+                            .uuid(UUID.randomUUID())
+                            .ra_id(i)
+                            .ra_label("Randonne " + i)
+                            .ra_description("Description " + i)
+                            .ra_duree(120 + i)
+                            .ra_difficulte("Medium")
+                            .ra_denivele(500 + i)
+                            .ra_distance(10.5 + i)
+                            .ra_boucle(true)
+                            .po_id(i)
+                            .av_id(i)
+                            .build();
+                    randonneService.create(randonne);
+                    break;
+            }
+            long endTime = System.nanoTime();
+            times.add(endTime - startTime);
+        }
+        return times;
+    }
+
+    private Map<String, Long> getBenchmarkMetrics(List<Long> times) {
+        long sum = 0;
+        long min = Long.MAX_VALUE;
+        long max = Long.MIN_VALUE;
+
+        for (long time : times) {
+            sum += time;
+            if (time < min) {
+                min = time;
+            }
+            if (time > max) {
+                max = time;
+            }
         }
 
-        long endTime = System.currentTimeMillis();
-        return "Benchmark delete: " + (endTime - startTime) + " ms";
+        long mean = sum / times.size();
+        Map<String, Long> metrics = new HashMap<>();
+        metrics.put("mean", mean);
+        metrics.put("min", min);
+        metrics.put("max", max);
+
+        return metrics;
     }
+
+
 
 }

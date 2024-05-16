@@ -12,9 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/avis/mongo")
@@ -72,72 +70,100 @@ public class AvisMongoDBController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<Avis>> searchAvis(@RequestBody AvisSearchCriteria criteria) {
-        List<Avis> results = avisService.search(criteria);
-        return ResponseEntity.ok(results);
+    public ResponseEntity<?> searchAvis(@RequestBody AvisSearchCriteria criteria) {
+        try {
+            List<Avis> results = avisService.search(criteria);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error searching Avis: " + e.getMessage());
+        }
     }
 
     // Benchmarks pour test de performance
 
     @GetMapping("/benchmark/create")
-    public String benchmarkCreate() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            avisService.create(Avis.builder()
-                    .uuid(UUID.randomUUID())
-                    .av_id(i)
-                    .av_etoile(Rating.FIVE)
-                    .av_message("Another great hike!")
-                    .build());
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark create : " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkCreate() {
+        List<Long> times = benchmarkOperation(1000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/get")
-    public String benchmarkGet() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            avisService.get(avis.getUuid());
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark get : " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkGet() {
+        List<Long> times = benchmarkOperation(1000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/update")
-    public String benchmarkUpdate() {
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 1000; i++) {
-            avis.setAv_message("Updated message " + i);
-            avisService.edit(avis);
-        }
-
-        long endTime = System.currentTimeMillis();
-        return "Benchmark update : " + (endTime - startTime) + " ms";
+    public ResponseEntity<Map<String, Long>> benchmarkUpdate() {
+        List<Long> times = benchmarkOperation(1000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/delete")
-    public String benchmarkDelete() {
-        long startTime = System.currentTimeMillis();
+    public ResponseEntity<Map<String, Long>> benchmarkDelete() {
+        List<Long> times = benchmarkOperation(1000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
 
-        for (int i = 0; i < 1000; i++) {
-            avisService.delete(avis.getUuid());
-            avis = Avis.builder()
-                    .uuid(UUID.randomUUID())
-                    .av_id(i)
-                    .av_etoile(Rating.FIVE)
-                    .av_message("Another great hike!")
-                    .build();
-            avisService.create(avis);
+    private List<Long> benchmarkOperation(int count, String operation) {
+        List<Long> times = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            long startTime = System.nanoTime();
+            switch (operation) {
+                case "create":
+                    avisService.create(Avis.builder()
+                            .uuid(UUID.randomUUID())
+                            .av_id(i)
+                            .av_etoile(Rating.FIVE)
+                            .av_message("Another great hike!")
+                            .build());
+                    break;
+                case "get":
+                    avisService.get(avis.getUuid());
+                    break;
+                case "update":
+                    avis.setAv_message("Updated message " + i);
+                    avisService.edit(avis);
+                    break;
+                case "delete":
+                    avisService.delete(avis.getUuid());
+                    avis = Avis.builder()
+                            .uuid(UUID.randomUUID())
+                            .av_id(i)
+                            .av_etoile(Rating.FIVE)
+                            .av_message("Another great hike!")
+                            .build();
+                    avisService.create(avis);
+                    break;
+            }
+            long endTime = System.nanoTime();
+            times.add(endTime - startTime);
+        }
+        return times;
+    }
+
+    private Map<String, Long> getBenchmarkMetrics(List<Long> times) {
+        long sum = 0;
+        long min = Long.MAX_VALUE;
+        long max = Long.MIN_VALUE;
+
+        for (long time : times) {
+            sum += time;
+            if (time < min) {
+                min = time;
+            }
+            if (time > max) {
+                max = time;
+            }
         }
 
-        long endTime = System.currentTimeMillis();
-        return "Benchmark delete : " + (endTime - startTime) + " ms";
+        long mean = sum / times.size();
+        Map<String, Long> metrics = new HashMap<>();
+        metrics.put("mean", mean);
+        metrics.put("min", min);
+        metrics.put("max", max);
+
+        return metrics;
     }
 
 }
