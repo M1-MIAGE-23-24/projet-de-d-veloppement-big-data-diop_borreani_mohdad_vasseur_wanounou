@@ -12,6 +12,4 @@ public interface AvisRepository {
 
     public List<Avis> findAll();
 
-    List<Avis> searchAvis(AvisSearchCriteria criteria);
-
 }
