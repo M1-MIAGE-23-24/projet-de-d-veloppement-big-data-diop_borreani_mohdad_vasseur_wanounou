@@ -1,6 +1,7 @@
 package fr.miage.m1.big_data_m1_23_24.controllers.redis;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
+import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.RandonneRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
 import fr.miage.m1.big_data_m1_23_24.services.mongo.RandonneMongoDBService;
@@ -71,6 +72,12 @@ public class RandonneRedisController {
     public ResponseEntity<?> deleteRandonne(@PathVariable UUID id) {
         randonneService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<Randonne>> searchRandonneRedis(@RequestBody RandonneSearchCriteria criteria) {
+        List<Randonne> results = randonneService.search(criteria);
+        return ResponseEntity.ok(results);
     }
 
     // Benchmarks pour test de performance

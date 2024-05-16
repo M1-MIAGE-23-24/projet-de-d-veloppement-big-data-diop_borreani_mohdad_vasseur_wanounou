@@ -44,7 +44,7 @@ public class RandonneRedisService implements RandonneService {
 
     @Override
     public List<Randonne> search(RandonneSearchCriteria criteria) {
-        return null;
+        return randonneRedisRepository.searchRandonneRedis(criteria);
     }
 
 
