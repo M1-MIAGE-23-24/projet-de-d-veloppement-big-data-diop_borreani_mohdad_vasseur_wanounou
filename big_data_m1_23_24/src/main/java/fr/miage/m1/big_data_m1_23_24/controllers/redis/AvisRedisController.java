@@ -1,10 +1,8 @@
 package fr.miage.m1.big_data_m1_23_24.controllers.redis;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Avis;
-import fr.miage.m1.big_data_m1_23_24.entity.AvisSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.entity.Rating;
 import fr.miage.m1.big_data_m1_23_24.services.AvisService;
-import fr.miage.m1.big_data_m1_23_24.services.mongo.AvisMongoDBService;
 import fr.miage.m1.big_data_m1_23_24.services.redis.AvisRedisService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,16 +61,6 @@ public class AvisRedisController {
     public ResponseEntity<?> deleteAvis(@PathVariable UUID id) {
         avisService.delete(id);
         return ResponseEntity.ok("Avis deleted");
-    }
-
-    @PostMapping("/search")
-    public ResponseEntity<?> searchAvis(@RequestBody AvisSearchCriteria criteria) {
-        try {
-            List<Avis> results = avisService.search(criteria);
-            return ResponseEntity.ok(results);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error searching Avis: " + e.getMessage());
-        }
     }
 
     // Benchmarks pour test de performance

@@ -101,6 +101,12 @@ public class PointInteretMongoDBController {
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
+    @GetMapping("/benchmark/search")
+    public ResponseEntity<Map<String, Long>> benchmarkSearch() {
+        List<Long> times = benchmarkOperation(1000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
     private List<Long> benchmarkOperation(int count, String operation) {
         List<Long> times = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -130,6 +136,11 @@ public class PointInteretMongoDBController {
                             .po_lien_photo("http://example.com/photo" + i + ".jpg")
                             .build();
                     pointInteretService.create(pointInteret);
+                    break;
+                case "search":
+                    PointInteretSearchCriteria criteria = new PointInteretSearchCriteria();
+                    criteria.setPo_description("Point Interet " + i);
+                    pointInteretService.search(criteria);
                     break;
             }
             long endTime = System.nanoTime();

@@ -81,5 +81,8 @@ public class Randonne {
                 '}';
     }
 
+    public Boolean getRa_boucle() {
+        return ra_boucle;
+    }
 }
 

@@ -1,7 +1,6 @@
 package fr.miage.m1.big_data_m1_23_24.services.mongo;
 
 import fr.miage.m1.big_data_m1_23_24.entity.Avis;
-import fr.miage.m1.big_data_m1_23_24.entity.AvisSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.mongo.AvisMongoDBRepository;
 import fr.miage.m1.big_data_m1_23_24.services.AvisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +46,4 @@ public class AvisMongoDBService implements AvisService {
         avisMongoDBRepository.deleteById(uuid);
     }
 
-    @Override
-    public List<Avis> search(AvisSearchCriteria criteria) {
-        return avisMongoDBRepository.searchAvis(criteria);
-    }
 }
