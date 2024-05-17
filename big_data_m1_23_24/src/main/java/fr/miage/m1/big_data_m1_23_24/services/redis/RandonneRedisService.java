@@ -6,7 +6,6 @@ import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.PointInteretRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.RandonneRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 import java.util.stream.Collectors;

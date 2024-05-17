@@ -4,7 +4,6 @@ import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
 import fr.miage.m1.big_data_m1_23_24.entity.RandonneSearchCriteria;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.RandonneRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.RandonneService;
-import fr.miage.m1.big_data_m1_23_24.services.mongo.RandonneMongoDBService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

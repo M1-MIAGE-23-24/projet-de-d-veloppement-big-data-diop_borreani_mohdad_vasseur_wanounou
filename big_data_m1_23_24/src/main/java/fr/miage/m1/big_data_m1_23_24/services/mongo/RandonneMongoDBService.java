@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
-
 @Service
 public class RandonneMongoDBService implements RandonneService {
 

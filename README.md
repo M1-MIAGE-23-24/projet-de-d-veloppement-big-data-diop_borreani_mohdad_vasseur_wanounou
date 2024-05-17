@@ -70,14 +70,32 @@ Ce projet a pour objectifs :
     ```bash
     ./gradlew build
     ```
+![img_3.png](images/img_3.png)
+
 4. Lancer les conteneurs Docker pour MongoDB et Redis :
     ```bash
     docker-compose up -d
     ```
+![img.png](images/imgtest.png)
+![img_1.png](images/img_1test.png)
 5. Lancer l'application Spring Boot :
     ```bash
     ./gradlew bootRun
     ```
+![img_2.png](images/img_2test.png)
+![img_3.png](images/img_3test.png)
+
+
+### Test de lancement
+
+![img_4.png](images/img_4test.png)
+
+![img_5.png](images/img_5test.png)
+
+![img_6.png](images/img_6test.png)
+
+![img_7.png](images/img_7test.png)
+
 
 ### Premiers pas 
 
