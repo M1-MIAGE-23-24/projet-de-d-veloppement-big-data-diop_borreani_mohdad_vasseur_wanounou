@@ -5,7 +5,6 @@ import fr.miage.m1.big_data_m1_23_24.entity.Randonne;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface RandonneRepository {

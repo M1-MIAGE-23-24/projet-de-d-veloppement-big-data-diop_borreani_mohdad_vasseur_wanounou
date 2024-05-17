@@ -2,7 +2,6 @@ package fr.miage.m1.big_data_m1_23_24.services.redis;
 
 import fr.miage.m1.big_data_m1_23_24.entity.PointInteret;
 import fr.miage.m1.big_data_m1_23_24.entity.PointInteretSearchCriteria;
-import fr.miage.m1.big_data_m1_23_24.repositories.redis.AvisRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.repositories.redis.PointInteretRedisRepository;
 import fr.miage.m1.big_data_m1_23_24.services.PointInteretService;
 import org.springframework.beans.factory.annotation.Autowired;
