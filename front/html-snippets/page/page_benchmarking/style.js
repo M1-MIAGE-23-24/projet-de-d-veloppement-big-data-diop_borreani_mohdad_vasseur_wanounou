@@ -69,7 +69,7 @@ export default class Style{
     #popupGlobal {
   
       display: none;
-      z-index: 1000;
+      z-index: 999;
       position: fixed;
       top: 0;
       left: 0;
