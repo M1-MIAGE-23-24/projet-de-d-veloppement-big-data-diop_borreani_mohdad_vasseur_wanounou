@@ -207,6 +207,7 @@ big_data_m1_23_24/
 
 ## Utiles
 Pour plus de détails, consultez le [Guide Backend](GuideBackend.md).
+Pour plus de détails, consultez le [Guide Frontend](GuideFrontend.md).
 
 
 ## Remarques
