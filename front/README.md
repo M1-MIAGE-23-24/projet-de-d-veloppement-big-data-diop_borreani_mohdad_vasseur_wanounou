@@ -1,1 +1,0 @@
-# fraud_detector_front
