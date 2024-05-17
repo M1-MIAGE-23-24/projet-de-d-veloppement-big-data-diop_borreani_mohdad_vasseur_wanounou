@@ -4,10 +4,10 @@
 
 Voici les différentes URL disponibles dans le contrôleur `RandonneMongoDBController` et leurs descriptions :
 
-Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo``` pour toutes les reqêtes.
+Pour Redis, il faut juste `randonne/redis` à la place de `randonne/mongo` pour toutes les requêtes.
 
 1. **Créer une randonnée**
-    - **URL** : `http://localhost:8080/randonne/mongo/`
+    - **URL** : [`http://localhost:8080/randonne/mongo/`](http://localhost:8080/randonne/mongo/)
     - **Méthode HTTP** : `POST`
     - **Description** : Crée une nouvelle randonnée dans MongoDB.
     - **Exemple de requête** :
@@ -28,7 +28,7 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
       ```
 
 2. **Récupérer une randonnée par ID**
-    - **URL** : `http://localhost:8080/randonne/mongo/{id}`
+    - **URL** : [`http://localhost:8080/randonne/mongo/{id}`](http://localhost:8080/randonne/mongo/{id})
     - **Méthode HTTP** : `GET`
     - **Description** : Récupère une randonnée spécifique par son ID.
     - **Exemple de requête** :
@@ -37,7 +37,7 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
       ```
 
 3. **Mettre à jour une randonnée**
-    - **URL** : `http://localhost:8080/randonne/mongo/{id}`
+    - **URL** : [`http://localhost:8080/randonne/mongo/{id}`](http://localhost:8080/randonne/mongo/{id})
     - **Méthode HTTP** : `PUT`
     - **Description** : Met à jour les informations d'une randonnée spécifique par son ID.
     - **Exemple de requête** :
@@ -51,7 +51,7 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
       ```
 
 4. **Supprimer une randonnée**
-    - **URL** : `http://localhost:8080/randonne/mongo/{id}`
+    - **URL** : [`http://localhost:8080/randonne/mongo/{id}`](http://localhost:8080/randonne/mongo/{id})
     - **Méthode HTTP** : `DELETE`
     - **Description** : Supprime une randonnée spécifique par son ID.
     - **Exemple de requête** :
@@ -60,7 +60,7 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
       ```
 
 5. **Rechercher des randonnées**
-    - **URL** : `http://localhost:8080/randonne/mongo/search`
+    - **URL** : [`http://localhost:8080/randonne/mongo/search`](http://localhost:8080/randonne/mongo/search)
     - **Méthode HTTP** : `POST`
     - **Description** : Recherche des randonnées en fonction des critères spécifiés.
     - **Exemple de requête** :
@@ -73,7 +73,7 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
       ```
 
 6. **Obtenir des randonnées avec des points d'intérêt**
-    - **URL** : `http://localhost:8080/randonne/mongo/join`
+    - **URL** : [`http://localhost:8080/randonne/mongo/join`](http://localhost:8080/randonne/mongo/join)
     - **Méthode HTTP** : `GET`
     - **Description** : Récupère les randonnées avec leurs points d'intérêt associés.
     - **Exemple de requête** :
@@ -86,107 +86,107 @@ Pour Redis, il faut juste ```randonne/redis``` à la place de ```randonne/mongo`
 Le contrôleur propose également plusieurs URL pour exécuter des benchmarks de performance sur les opérations CRUD et les recherches.
 
 1. **Benchmark de création (1000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/create`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create`](http://localhost:8080/randonne/mongo/benchmark/create)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 1000 randonnées.
 
 2. **Benchmark de récupération (1000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/get`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get`](http://localhost:8080/randonne/mongo/benchmark/get)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 1000 randonnées.
 
 3. **Benchmark de mise à jour (1000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/update`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update`](http://localhost:8080/randonne/mongo/benchmark/update)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 1000 randonnées.
 
 4. **Benchmark de suppression (1000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/delete`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete`](http://localhost:8080/randonne/mongo/benchmark/delete)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 1000 randonnées.
 
 5. **Benchmark de recherche (1000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/search`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search`](http://localhost:8080/randonne/mongo/benchmark/search)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 1000 randonnées.
 
 6. **Benchmark de jointure (5 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/join`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/join`](http://localhost:8080/randonne/mongo/benchmark/join)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de jointure sur 5 randonnées.
 
 7. **Benchmark de création (10000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/create/10000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/10000`](http://localhost:8080/randonne/mongo/benchmark/create/10000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 10000 randonnées.
 
 8. **Benchmark de récupération (10000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/get/10000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/10000`](http://localhost:8080/randonne/mongo/benchmark/get/10000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 10000 randonnées.
 
 9. **Benchmark de mise à jour (10000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/update/10000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/10000`](http://localhost:8080/randonne/mongo/benchmark/update/10000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 10000 randonnées.
 
 10. **Benchmark de suppression (10000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/delete/10000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/10000`](http://localhost:8080/randonne/mongo/benchmark/delete/10000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 10000 randonnées.
 
 11. **Benchmark de recherche (10000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/search/10000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/10000`](http://localhost:8080/randonne/mongo/benchmark/search/10000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 10000 randonnées.
 
 12. **Benchmark de création (20000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/create/20000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/20000`](http://localhost:8080/randonne/mongo/benchmark/create/20000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 20000 randonnées.
 
 13. **Benchmark de récupération (20000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/get/20000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/20000`](http://localhost:8080/randonne/mongo/benchmark/get/20000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 20000 randonnées.
 
 14. **Benchmark de mise à jour (20000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/update/20000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/20000`](http://localhost:8080/randonne/mongo/benchmark/update/20000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 20000 randonnées.
 
 15. **Benchmark de suppression (20000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/delete/20000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/20000`](http://localhost:8080/randonne/mongo/benchmark/delete/20000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 20000 randonnées.
 
 16. **Benchmark de recherche (20000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/search/20000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/20000`](http://localhost:8080/randonne/mongo/benchmark/search/20000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 20000 randonnées.
 
 17. **Benchmark de création (50000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/create/50000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/50000`](http://localhost:8080/randonne/mongo/benchmark/create/50000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 50000 randonnées.
 
 18. **Benchmark de récupération (50000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/get/50000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/50000`](http://localhost:8080/randonne/mongo/benchmark/get/50000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 50000 randonnées.
 
 19. **Benchmark de mise à jour (50000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/update/50000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/50000`](http://localhost:8080/randonne/mongo/benchmark/update/50000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 50000 randonnées.
 
 20. **Benchmark de suppression (50000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/delete/50000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/50000`](http://localhost:8080/randonne/mongo/benchmark/delete/50000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 50000 randonnées.
 
 21. **Benchmark de recherche (50000 entrées)**
-    - **URL** : `http://localhost:8080/randonne/mongo/benchmark/search/50000`
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/50000`](http://localhost:8080/randonne/mongo/benchmark/search/50000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 50000 randonnées.
 
@@ -194,12 +194,12 @@ Ces benchmarks permettent de mesurer les performances des différentes opératio
 
 ### Contrôleur MongoDB pour les Avis
 
-Pour Redis, il faut juste ```avis/redis``` à la place de ```avis/mongo``` pour toutes les reqêtes.
+Pour Redis, il faut juste `avis/redis` à la place de `avis/mongo` pour toutes les requêtes.
 
 Voici les différentes URL disponibles dans le contrôleur `AvisMongoDBController` et leurs descriptions :
 
 1. **Créer un avis**
-    - **URL** : `http://localhost:8080/avis/mongo/`
+    - **URL** : [`http://localhost:8080/avis/mongo/`](http://localhost:8080/avis/mongo/)
     - **Méthode HTTP** : `POST`
     - **Description** : Crée un nouvel avis dans MongoDB.
     - **Exemple de requête** :
@@ -213,7 +213,7 @@ Voici les différentes URL disponibles dans le contrôleur `AvisMongoDBControlle
       ```
 
 2. **Récupérer un avis par ID**
-    - **URL** : `http://localhost:8080/avis/mongo/{id}`
+    - **URL** : [`http://localhost:8080/avis/mongo/{id}`](http://localhost:8080/avis/mongo/{id})
     - **Méthode HTTP** : `GET`
     - **Description** : Récupère un avis spécifique par son ID.
     - **Exemple de requête** :
@@ -222,7 +222,7 @@ Voici les différentes URL disponibles dans le contrôleur `AvisMongoDBControlle
       ```
 
 3. **Mettre à jour un avis**
-    - **URL** : `http://localhost:8080/avis/mongo/{id}`
+    - **URL** : [`http://localhost:8080/avis/mongo/{id}`](http://localhost:8080/avis/mongo/{id})
     - **Méthode HTTP** : `PUT`
     - **Description** : Met à jour les informations d'un avis spécifique par son ID.
     - **Exemple de requête** :
@@ -236,7 +236,7 @@ Voici les différentes URL disponibles dans le contrôleur `AvisMongoDBControlle
       ```
 
 4. **Supprimer un avis**
-    - **URL** : `http://localhost:8080/avis/mongo/{id}`
+    - **URL** : [`http://localhost:8080/avis/mongo/{id}`](http://localhost:8080/avis/mongo/{id})
     - **Méthode HTTP** : `DELETE`
     - **Description** : Supprime un avis spécifique par son ID.
     - **Exemple de requête** :
@@ -249,22 +249,22 @@ Voici les différentes URL disponibles dans le contrôleur `AvisMongoDBControlle
 Le contrôleur propose également plusieurs URL pour exécuter des benchmarks de performance sur les opérations CRUD.
 
 1. **Benchmark de création (1000 entrées)**
-    - **URL** : `http://localhost:8080/avis/mongo/benchmark/create`
+    - **URL** : [`http://localhost:8080/avis/mongo/benchmark/create`](http://localhost:8080/avis/mongo/benchmark/create)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 1000 avis.
 
 2. **Benchmark de récupération (1000 entrées)**
-    - **URL** : `http://localhost:8080/avis/mongo/benchmark/get`
+    - **URL** : [`http://localhost:8080/avis/mongo/benchmark/get`](http://localhost:8080/avis/mongo/benchmark/get)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 1000 avis.
 
 3. **Benchmark de mise à jour (1000 entrées)**
-    - **URL** : `http://localhost:8080/avis/mongo/benchmark/update`
+    - **URL** : [`http://localhost:8080/avis/mongo/benchmark/update`](http://localhost:8080/avis/mongo/benchmark/update)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 1000 avis.
 
 4. **Benchmark de suppression (1000 entrées)**
-    - **URL** : `http://localhost:8080/avis/mongo/benchmark/delete`
+    - **URL** : [`http://localhost:8080/avis/mongo/benchmark/delete`](http://localhost:8080/avis/mongo/benchmark/delete)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 1000 avis.
 
@@ -274,10 +274,10 @@ Ces benchmarks permettent de mesurer les performances des différentes opératio
 
 Voici les différentes URL disponibles dans le contrôleur `PointInteretMongoDBController` et leurs descriptions :
 
-Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointInteret/mongo``` pour toutes les reqêtes.
+Pour Redis, il faut juste `pointInteret/redis` à la place de `pointInteret/mongo` pour toutes les requêtes.
 
 1. **Créer un point d'intérêt**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/`](http://localhost:8080/pointInteret/mongo/)
     - **Méthode HTTP** : `POST`
     - **Description** : Crée un nouveau point d'intérêt dans MongoDB.
     - **Exemple de requête** :
@@ -291,7 +291,7 @@ Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointIntere
       ```
 
 2. **Récupérer un point d'intérêt par ID**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/{id}`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/{id}`](http://localhost:8080/pointInteret/mongo/{id})
     - **Méthode HTTP** : `GET`
     - **Description** : Récupère un point d'intérêt spécifique par son ID.
     - **Exemple de requête** :
@@ -300,7 +300,7 @@ Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointIntere
       ```
 
 3. **Mettre à jour un point d'intérêt**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/{id}`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/{id}`](http://localhost:8080/pointInteret/mongo/{id})
     - **Méthode HTTP** : `PUT`
     - **Description** : Met à jour les informations d'un point d'intérêt spécifique par son ID.
     - **Exemple de requête** :
@@ -314,7 +314,7 @@ Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointIntere
       ```
 
 4. **Supprimer un point d'intérêt**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/{id}`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/{id}`](http://localhost:8080/pointInteret/mongo/{id})
     - **Méthode HTTP** : `DELETE`
     - **Description** : Supprime un point d'intérêt spécifique par son ID.
     - **Exemple de requête** :
@@ -323,7 +323,7 @@ Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointIntere
       ```
 
 5. **Rechercher des points d'intérêt**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/search`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/search`](http://localhost:8080/pointInteret/mongo/search)
     - **Méthode HTTP** : `POST`
     - **Description** : Recherche des points d'intérêt en fonction des critères spécifiés.
     - **Exemple de requête** :
@@ -340,27 +340,27 @@ Pour Redis, il faut juste ```pointInteret/redis``` à la place de ```pointIntere
 Le contrôleur propose également plusieurs URL pour exécuter des benchmarks de performance sur les opérations CRUD et les recherches.
 
 1. **Benchmark de création (1000 entrées)**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/benchmark/create`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/benchmark/create`](http://localhost:8080/pointInteret/mongo/benchmark/create)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 1000 points d'intérêt.
 
 2. **Benchmark de récupération (1000 entrées)**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/benchmark/get`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/benchmark/get`](http://localhost:8080/pointInteret/mongo/benchmark/get)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 1000 points d'intérêt.
 
 3. **Benchmark de mise à jour (1000 entrées)**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/benchmark/update`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/benchmark/update`](http://localhost:8080/pointInteret/mongo/benchmark/update)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 1000 points d'intérêt.
 
 4. **Benchmark de suppression (1000 entrées)**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/benchmark/delete`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/benchmark/delete`](http://localhost:8080/pointInteret/mongo/benchmark/delete)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 1000 points d'intérêt.
 
 5. **Benchmark de recherche (1000 entrées)**
-    - **URL** : `http://localhost:8080/pointInteret/mongo/benchmark/search`
+    - **URL** : [`http://localhost:8080/pointInteret/mongo/benchmark/search`](http://localhost:8080/pointInteret/mongo/benchmark/search)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 1000 points d'intérêt.
 

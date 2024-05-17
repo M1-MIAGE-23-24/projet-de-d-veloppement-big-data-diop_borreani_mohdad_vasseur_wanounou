@@ -206,7 +206,8 @@ big_data_m1_23_24/
 - M. BORREANI Théo
 
 ## Utiles
-Regarder le Readme (Guide) !:
+Pour plus de détails, consultez le [Guide Backend](GuideBackend.md).
+
 
 ## Remarques
 
