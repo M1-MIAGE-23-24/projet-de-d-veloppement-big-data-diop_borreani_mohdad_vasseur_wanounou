@@ -144,9 +144,25 @@ export default class Content{
       "language": "language-mongodb"
     });
 
+    //  ----------------------------------------------
+
+    var benchmarkJointure = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET http://localhost:8080/randonne/mongo/benchmark/join"),
+      "language": "language-mongodb"
+    });
+
+    var benchmarkRandoMongoSearch = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET http://localhost:8080/randonne/mongo/benchmark/search"),
+      "language": "language-mongodb"
+    });
+
+    var benchmarkRandoRedisSearch = JSON.stringify({
+      "code": encodeURIComponent("curl -X GET http://localhost:8080/randonne/redis/benchmark/search"),
+      "language": "language-mongodb"
+    });
 
 
-
+    
     
     return  ` 
 
@@ -168,6 +184,9 @@ export default class Content{
           <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString=${benchmarkRandoRedisUpdate}></bt-code-presentation>
           <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>Nombre d'itéraions</p></div>
+          <bt-input id="formID1" jsonObjectString='{"label":"Par défaut 10 000 itérations"}'></bt-input>
+          <bt-container class="space"></bt-container>
           <div class="div6"><bt-button id="boutonBenchmarkRandonneeUpdate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
@@ -177,6 +196,9 @@ export default class Content{
           <bt-code-presentation jsonObjectString=${benchmarkRandoMongoGet}></bt-code-presentation>
           <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString=${benchmarkRandoRedisGet}></bt-code-presentation>
+          <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>Nombre d'itéraions</p></div>
+          <bt-input id="formID2" jsonObjectString='{"label":"Par défaut 10 000 itérations"}'></bt-input>
           <bt-container class="space"></bt-container>
           <div class="div6"><bt-button id="boutonBenchmarkRandonneeGet" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
@@ -188,6 +210,9 @@ export default class Content{
           <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString=${benchmarkRandoRedisDelete}></bt-code-presentation>
           <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>Nombre d'itéraions</p></div>
+          <bt-input id="formID3" jsonObjectString='{"label":"Par défaut 10 000 itérations"}'></bt-input>
+          <bt-container class="space"></bt-container>
           <div class="div6"><bt-button id="boutonBenchmarkRandonneeDelete" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
@@ -198,92 +223,33 @@ export default class Content{
           <p class="paragraphe2">Redis</p>
           <bt-code-presentation jsonObjectString=${benchmarkRandoRedisCreate}></bt-code-presentation>
           <bt-container class="space"></bt-container>
+          <div class="paragraphe"><p>Nombre d'itéraions</p></div>
+          <bt-input id="formID4" jsonObjectString='{"label":"Par défaut 10 000 itérations"}'></bt-input>
+          <bt-container class="space"></bt-container>
           <div class="div6"><bt-button id="boutonBenchmarkRandonneeCreate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
-        <!-- --------------------------------------------------------------------------------------------- -->
+        <div class="div1">
+        <h2>Benchmark sur recherche des randonnées</h2>
+        <p class="paragraphe2">MongoDb</p>
+        <bt-code-presentation jsonObjectString=${benchmarkRandoMongoSearch}></bt-code-presentation>
+        <p class="paragraphe2">Redis</p>
+        <bt-code-presentation jsonObjectString=${benchmarkRandoRedisSearch}></bt-code-presentation>
+        <bt-container class="space"></bt-container>
+        <div class="paragraphe"><p>Nombre d'itéraions</p></div>
+        <bt-input id="formID5" jsonObjectString='{"label":"Par défaut 10 000 itérations"}'></bt-input>
+        <bt-container class="space"></bt-container>
+        <div class="div6"><bt-button id="boutonBenchmarkRandonneeSearch" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+      </div>
 
         <div class="div1">
-          <h2>Benchmark sur lecture des avis - Update</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisMongoUpdate}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisRedisUpdate}></bt-code-presentation>
+          <h2>Benchmark de jointure (5 entrées)</h2>
+          <bt-code-presentation jsonObjectString=${benchmarkJointure}></bt-code-presentation>
           <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkAvisUpdate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
+          <div class="div6"><bt-button id="boutonBenchmarkJointure" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
-        <div class="div1">
-          <h2>Benchmark sur lecture des avis - Get</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisMongoGet}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisRedisGet}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkAvisGet" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des avis - Delete</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisMongoDelete}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisRedisDelete}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkAvisDelete" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des avis - Create</h2>
-          p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisMongoCreate}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkAvisRedisCreate}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkAvisCreate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <!-- --------------------------------------------------------------------------------------------- -->
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des points d'interets - Update</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretMongoUpdate}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretRedisUpdate}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkPointInteretUpdate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des points d'interets - Get</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretMongoGet}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretRedisGet}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkPointInteretGet" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des points d'interets - Delete</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretMongoDelete}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretRedisDelete}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkPointInteretDelete" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
-
-        <div class="div1">
-          <h2>Benchmark sur lecture des points d'interets - Create</h2>
-          <p class="paragraphe2">MongoDb</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretMongoCreate}></bt-code-presentation>
-          <p class="paragraphe2">Redis</p>
-          <bt-code-presentation jsonObjectString=${benchmarkPointInteretRedisCreate}></bt-code-presentation>
-          <bt-container class="space"></bt-container>
-          <div class="div6"><bt-button id="boutonBenchmarkPointInteretCreate" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
-        </div>
+  
 
         <!-- --------------------------------------------------------------------------------------------- -->
 
@@ -301,8 +267,12 @@ export default class Content{
           <div class="div6"><bt-button id="boutonInfoRedis" jsonObjectString='{"label":"Lancer"}'></bt-button></div>
         </div>
 
+        <!-- --------------------------------------------------------------------------------------------- -->
+
+        
 
 
+        http://localhost:8080/randonne/mongo/benchmark/join
 
 
         </div>
