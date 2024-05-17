@@ -190,6 +190,11 @@ Le contrôleur propose également plusieurs URL pour exécuter des benchmarks de
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 50000 randonnées.
 
+22. **Benchmark de jointure (10 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/join/10`](http://localhost:8080/randonne/mongo/benchmark/join/10)
+    - **Méthode HTTP** : `GET`
+    - **Description** : Exécute un benchmark de jointure sur 10 randonnées.
+
 Ces benchmarks permettent de mesurer les performances des différentes opérations CRUD ainsi que des opérations de recherche et de jointure dans MongoDB.
 
 ### Contrôleur MongoDB pour les Avis

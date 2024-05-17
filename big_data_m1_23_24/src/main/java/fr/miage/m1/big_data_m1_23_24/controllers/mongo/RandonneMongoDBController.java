@@ -125,6 +125,12 @@ public class RandonneMongoDBController {
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
+    @GetMapping("/benchmark/join/10")
+    public ResponseEntity<Map<String, Double>> benchmarkJoin10() {
+        List<Long> times = benchmarkOperation(10, "join");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
     @GetMapping("/benchmark/create/10000")
     public ResponseEntity<Map<String, Double>> benchmarkCreate10000() {
         List<Long> times = benchmarkOperation(10000, "create");
