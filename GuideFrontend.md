@@ -4,7 +4,7 @@ Le site web a était développé avec Javascript, HTML et CSS ainsi que la bibli
 
 ## Lancer le projet
 
-Il y a deux possibilité soit vous pouvez lancer le projet avec un outit comme Mamp, Laragon.. Soit vous pouvez tout simplement charger l'URL http://localhost/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/# dans votre navigateur.
+Il y a deux possibilité soit vous pouvez lancer le projet avec un outit comme Mamp, Laragon.. Soit vous pouvez tout simplement charger l'URL http://borreani.fr/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/# dans votre navigateur.
 
 ## Fonctionnalités 
 
