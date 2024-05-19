@@ -141,11 +141,11 @@ class Page extends HTMLElement {
     // Bouton Supression Randonnée
     // -----------------------------------------------------------
     this.shadow.getElementById("boutonSupressionRandonnee").addEventListener("click", async () => {
-      const id = this.shadow.getElementById("champIDLectureRandonnee").getValue();
+      var id = this.shadow.getElementById("champIDSupressionRandonnee").getValue();
       var data = "";
       // Résultat sur MongoDB
       try {
-        console.log(`http://localhost:8080/randonne/mongo/${id}`);
+        console.log(id);
         const reponse = await fetch(`http://localhost:8080/randonne/mongo/${id}`,{
           method: "delete",
         });
