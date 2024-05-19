@@ -116,54 +116,54 @@ Le contrôleur propose également plusieurs URL pour exécuter des benchmarks de
     - **Description** : Exécute un benchmark de jointure sur randonnées et point interet.
 
 7. **Benchmark de création (1000000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/1000000`](http://localhost:8080/randonne/mongo/benchmark/create/10000)
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/1000000`](http://localhost:8080/randonne/mongo/benchmark/create/1000000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de création de 1000000 randonnées.
 
 8. **Benchmark de récupération (1000000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/1000000`](http://localhost:8080/randonne/mongo/benchmark/get/10000)
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/1000000`](http://localhost:8080/randonne/mongo/benchmark/get/1000000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de récupération de 1000000 randonnées.
 
 9. **Benchmark de mise à jour (1000000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/1000000`](http://localhost:8080/randonne/mongo/benchmark/update/10000)
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/1000000`](http://localhost:8080/randonne/mongo/benchmark/update/1000000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de mise à jour de 1000000 randonnées.
 
 10. **Benchmark de suppression (1000000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/1000000`](http://localhost:8080/randonne/mongo/benchmark/delete/10000)
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/1000000`](http://localhost:8080/randonne/mongo/benchmark/delete/1000000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de suppression de 1000000 randonnées.
 
 11. **Benchmark de recherche (1000000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/1000000`](http://localhost:8080/randonne/mongo/benchmark/search/10000)
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/1000000`](http://localhost:8080/randonne/mongo/benchmark/search/1000000)
     - **Méthode HTTP** : `GET`
     - **Description** : Exécute un benchmark de recherche sur 1000000 randonnées.
 
-12. **Benchmark de création (200000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/200000`](http://localhost:8080/randonne/mongo/benchmark/create/20000)
+12. **Benchmark de création (250000 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/250000`](http://localhost:8080/randonne/mongo/benchmark/create/250000)
     - **Méthode HTTP** : `GET`
-    - **Description** : Exécute un benchmark de création de 200000 randonnées.
+    - **Description** : Exécute un benchmark de création de 250000 randonnées.
 
-13. **Benchmark de récupération (200000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/200000`](http://localhost:8080/randonne/mongo/benchmark/get/20000)
+13. **Benchmark de récupération (250000 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/get/250000`](http://localhost:8080/randonne/mongo/benchmark/get/250000)
     - **Méthode HTTP** : `GET`
-    - **Description** : Exécute un benchmark de récupération de 200000 randonnées.
+    - **Description** : Exécute un benchmark de récupération de 250000 randonnées.
 
-14. **Benchmark de mise à jour (200000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/200000`](http://localhost:8080/randonne/mongo/benchmark/update/20000)
+14. **Benchmark de mise à jour (250000 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/update/250000`](http://localhost:8080/randonne/mongo/benchmark/update/250000)
     - **Méthode HTTP** : `GET`
-    - **Description** : Exécute un benchmark de mise à jour de 200000 randonnées.
+    - **Description** : Exécute un benchmark de mise à jour de 250000 randonnées.
 
-15. **Benchmark de suppression (200000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/200000`](http://localhost:8080/randonne/mongo/benchmark/delete/20000)
+15. **Benchmark de suppression (250000 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/delete/250000`](http://localhost:8080/randonne/mongo/benchmark/delete/250000)
     - **Méthode HTTP** : `GET`
-    - **Description** : Exécute un benchmark de suppression de 200000 randonnées.
+    - **Description** : Exécute un benchmark de suppression de 250000 randonnées.
 
-16. **Benchmark de recherche (200000 entrées)**
-    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/200000`](http://localhost:8080/randonne/mongo/benchmark/search/20000)
+16. **Benchmark de recherche (250000 entrées)**
+    - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/search/250000`](http://localhost:8080/randonne/mongo/benchmark/search/250000)
     - **Méthode HTTP** : `GET`
-    - **Description** : Exécute un benchmark de recherche sur 200000 randonnées.
+    - **Description** : Exécute un benchmark de recherche sur 250000 randonnées.
 
 17. **Benchmark de création (500000 entrées)**
     - **URL** : [`http://localhost:8080/randonne/mongo/benchmark/create/500000`](http://localhost:8080/randonne/mongo/benchmark/create/50000)
