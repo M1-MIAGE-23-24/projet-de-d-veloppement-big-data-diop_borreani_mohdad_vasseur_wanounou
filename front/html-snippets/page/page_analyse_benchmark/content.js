@@ -221,7 +221,7 @@ export default class Content{
           </div>
           </div>
           <p>
-            Redis est plus efficasse sur le total et la moyenne de même que sur le minimum et le maximum mais c'est à peu près équivalent.
+            Redis est plus efficace sur le total et la moyenne de même que sur le minimum et le maximum mais c'est à peut près équivalent.
           </p>
 
           <h3>Benchmark de mise à jours pour 1000000 éléments</h3>
@@ -325,7 +325,7 @@ export default class Content{
           </div>
           </div>
           <p>
-            MongoDB semble un peu plus rapide sur le toral, le minimum et la moyenne. En revanche, Redis est plus rapide sur le maximum et surtout la moyenne.
+            MongoDB semble un peu plus rapide sur le total, le minimum et la moyenne. En revanche, Redis est plus rapide sur le maximum et surtout la moyenne.
           </p>
 
           <h3>Benchmark de supression pour 1000000 éléments</h3>
@@ -536,7 +536,7 @@ export default class Content{
           </div>
           </div>
           <p>
-            Ici les reqête semblent être équivalentes. Par contre nous pouvons remarquer que les recherches sont plutôt lentes. comparé aux autres opérations
+            Ici les requêtes semblent être équivalentes. Par contre nous pouvons remarquer que les recherches sont plutôt lentes. comparé aux autres opérations
           </p>
 
           <h3>Conclusion</h3>
