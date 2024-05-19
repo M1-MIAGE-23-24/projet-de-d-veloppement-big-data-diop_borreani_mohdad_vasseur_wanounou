@@ -143,6 +143,14 @@ Pour ce faire :
 4. Dans la fenêtre de configuration et laissez tous les autres paramètres par défaut.
 5. Cliquez sur **Test Connection** pour vérifier la connexion, puis sur **OK** pour enregistrer la configuration.
 
+### Configuration 
+
+Si l'application met trop de temps à charger les données et que vous souhaitiez tester sans pour autant avoir autant de données.
+
+Veuillez ouvrir le fichier ```BigDataM12324Application``` dans ```big_data_m1_23_24/src/main/java``` et modifiez les fichiers à charger sur les deux BDD en enlevant **100000Donnees** à la fin des 3 fichiers à charger à savoir **randonnes**, **avis** et **point_interets**. 
+![config1.png](images/config1.png)  
+Ainsi, vous allez charger 1 000 données au lieu de 100 000 dans chacune des 3 tables. Ceci, ne bloque en rien l'application, vous aurez quand même toujours des itérations sur **10 000**, **20 000**, **50 000**, **100 000**, **250 000**, **500 000** et **1 000 000** de données à tester pour la performance sur le benchmark.
+
 
 ### L'application
 
