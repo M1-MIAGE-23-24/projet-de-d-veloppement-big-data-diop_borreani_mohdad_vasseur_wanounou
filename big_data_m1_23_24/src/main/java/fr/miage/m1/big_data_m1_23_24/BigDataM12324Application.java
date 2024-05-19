@@ -86,10 +86,15 @@ public class BigDataM12324Application {
 					.build();
 			 */
 
+			if (randonneMongoDBRepository.count() > 99999 && avisMongoDBRepository.count() > 99999 && pointInteretMongoDBRepository.count() > 99999) {
+				System.out.println("Data already exists in MongoDB and Redis. Skipping data load.");
+				return;
+			}
+
 			ObjectMapper objectMapper = new ObjectMapper();
-			File file = new File("big_data_m1_23_24/src/main/resources/scripts/randonnes.json");
-			File avisFile = new File("big_data_m1_23_24/src/main/resources/scripts/avis.json");
-			File pointFile = new File("big_data_m1_23_24/src/main/resources/scripts/point_interets.json");
+			File file = new File("big_data_m1_23_24/src/main/resources/scripts/randonnes100000Donnees.json");
+			File avisFile = new File("big_data_m1_23_24/src/main/resources/scripts/avis100000Donnees.json");
+			File pointFile = new File("big_data_m1_23_24/src/main/resources/scripts/point_interets100000Donnees.json");
 
 			try {
 				// Lire le fichier JSON et convertir en liste d'objets Randonne

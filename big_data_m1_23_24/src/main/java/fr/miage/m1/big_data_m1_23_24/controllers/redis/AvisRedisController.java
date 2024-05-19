@@ -66,26 +66,26 @@ public class AvisRedisController {
     // Benchmarks pour test de performance
 
     @GetMapping("/benchmark/create")
-    public ResponseEntity<Map<String, Long>> benchmarkCreate() {
-        List<Long> times = benchmarkOperation(1000, "create");
+    public ResponseEntity<Map<String, Double>> benchmarkCreate() {
+        List<Long> times = benchmarkOperation(100000, "create");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/get")
-    public ResponseEntity<Map<String, Long>> benchmarkGet() {
-        List<Long> times = benchmarkOperation(1000, "get");
+    public ResponseEntity<Map<String, Double>> benchmarkGet() {
+        List<Long> times = benchmarkOperation(100000, "get");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/update")
-    public ResponseEntity<Map<String, Long>> benchmarkUpdate() {
-        List<Long> times = benchmarkOperation(1000, "update");
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate() {
+        List<Long> times = benchmarkOperation(100000, "update");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/delete")
-    public ResponseEntity<Map<String, Long>> benchmarkDelete() {
-        List<Long> times = benchmarkOperation(1000, "delete");
+    public ResponseEntity<Map<String, Double>> benchmarkDelete() {
+        List<Long> times = benchmarkOperation(100000, "delete");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
@@ -126,10 +126,10 @@ public class AvisRedisController {
         return times;
     }
 
-    private Map<String, Long> getBenchmarkMetrics(List<Long> times) {
-        long sum = 0;
-        long min = Long.MAX_VALUE;
-        long max = Long.MIN_VALUE;
+    private Map<String, Double> getBenchmarkMetrics(List<Long> times) {
+        double sum = 0;
+        double min = Long.MAX_VALUE;
+        double max = Long.MIN_VALUE;
 
         for (long time : times) {
             sum += time;
@@ -141,11 +141,12 @@ public class AvisRedisController {
             }
         }
 
-        long mean = sum / times.size();
-        Map<String, Long> metrics = new HashMap<>();
-        metrics.put("mean", mean);
-        metrics.put("min", min);
-        metrics.put("max", max);
+        double mean = sum / times.size();
+        Map<String, Double> metrics = new HashMap<>();
+        metrics.put("mean", mean / 1_000_000.0);  // Convert to milliseconds
+        metrics.put("min", min / 1_000_000.0);    // Convert to milliseconds
+        metrics.put("max", max / 1_000_000.0);    // Convert to milliseconds
+        metrics.put("total", sum / 1_000_000.0);  // Convert to milliseconds
 
         return metrics;
     }
