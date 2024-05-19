@@ -7,7 +7,6 @@ export default class Style{
   }
 
   .divGlobal{
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -15,15 +14,28 @@ export default class Style{
   }
   .divAnnalyseBenchmark {
     display: flex;
-    max-width: 2000px;
+    max-width: 100%;
     justify-content: center;
     align-items: center;
-
-    margin-top: 20px;
     flex-direction: column;
 
-
+    margin-top: 20px;
   }
+
+  
+  .divv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    white-space: normal;
+    width: 100%; 
+  }
+
+  .divvv{
+  width:25%;
+}
+
 
   .char1{
 
