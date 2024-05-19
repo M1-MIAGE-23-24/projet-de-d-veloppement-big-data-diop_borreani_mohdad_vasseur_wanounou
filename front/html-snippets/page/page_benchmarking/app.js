@@ -47,9 +47,10 @@ class Page extends HTMLElement {
         // [Rando]
         // -----------------------------------------------------------
         this.shadow.getElementById("boutonBenchmarkRandonneeGet").addEventListener("click", async () => {
-            var arg = this.shadow.getElementById("formID1").getValue();
+            var arg = this.shadow.getElementById("formID2").getValue();
             if(arg==""){arg="10000"};
-            console.log(arg)
+            console.log (arg);
+
             var data = "";
             // Résultat sur MongoDB
             try {
@@ -79,7 +80,7 @@ class Page extends HTMLElement {
         // [Rando]
         // -----------------------------------------------------------
         this.shadow.getElementById("boutonBenchmarkRandonneeDelete").addEventListener("click", async () => {
-            var arg = this.shadow.getElementById("formID1").getValue();
+            var arg = this.shadow.getElementById("formID3").getValue();
             if(arg==""){arg="10000"};
             console.log(arg)
             var data = "";
@@ -111,7 +112,7 @@ class Page extends HTMLElement {
         // [Rando]
         // -----------------------------------------------------------
         this.shadow.getElementById("boutonBenchmarkRandonneeCreate").addEventListener("click", async () => {
-            var arg = this.shadow.getElementById("formID1").getValue();
+            var arg = this.shadow.getElementById("formID4").getValue();
             if(arg==""){arg="10000"};
             console.log(arg)
             var data = "";
