@@ -15,7 +15,7 @@ export default class Style{
   }
   .divAnnalyseBenchmark {
     display: flex;
-    max-width: 800px;
+    max-width: 2000px;
     justify-content: center;
     align-items: center;
 
