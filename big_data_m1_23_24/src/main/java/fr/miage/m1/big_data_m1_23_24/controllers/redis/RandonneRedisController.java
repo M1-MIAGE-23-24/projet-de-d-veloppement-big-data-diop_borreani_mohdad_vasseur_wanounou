@@ -215,6 +215,96 @@ public class RandonneRedisController {
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
+    @GetMapping("/benchmark/create/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate1000000() {
+        List<Long> times = benchmarkOperation(1000000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet1000000() {
+        List<Long> times = benchmarkOperation(1000000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate1000000() {
+        List<Long> times = benchmarkOperation(1000000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete1000000() {
+        List<Long> times = benchmarkOperation(1000000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch100000() {
+        List<Long> times = benchmarkOperation(1000000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/create/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate250000() {
+        List<Long> times = benchmarkOperation(250000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet250000() {
+        List<Long> times = benchmarkOperation(250000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate250000() {
+        List<Long> times = benchmarkOperation(250000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete250000() {
+        List<Long> times = benchmarkOperation(250000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch250000() {
+        List<Long> times = benchmarkOperation(250000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/create/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate500000() {
+        List<Long> times = benchmarkOperation(500000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet500000() {
+        List<Long> times = benchmarkOperation(500000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate500000() {
+        List<Long> times = benchmarkOperation(500000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete500000() {
+        List<Long> times = benchmarkOperation(500000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch500000() {
+        List<Long> times = benchmarkOperation(500000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
     private List<Long> benchmarkOperation(int count, String operation) {
         List<Long> times = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -294,6 +384,7 @@ public class RandonneRedisController {
         metrics.put("mean", mean / 1_000_000.0);  // Convert to milliseconds
         metrics.put("min", min / 1_000_000.0);    // Convert to milliseconds
         metrics.put("max", max / 1_000_000.0);    // Convert to milliseconds
+        metrics.put("total", sum / 1_000_000.0);  // Convert to milliseconds
 
         return metrics;
     }

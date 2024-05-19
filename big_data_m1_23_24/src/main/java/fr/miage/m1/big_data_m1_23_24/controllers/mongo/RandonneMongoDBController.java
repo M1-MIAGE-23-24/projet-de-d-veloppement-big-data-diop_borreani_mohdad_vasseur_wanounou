@@ -10,11 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.*;
 
 @RestController
 @RequestMapping("/randonne/mongo")
 public class RandonneMongoDBController {
+
+    private static final Logger logger = LoggerFactory.getLogger(RandonneMongoDBController.class);
 
     @Autowired
     private RandonneMongoDBService randonneMongoDBService;
@@ -49,12 +54,25 @@ public class RandonneMongoDBController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
+        long startTime = System.currentTimeMillis();
         try {
-            return ResponseEntity.ok(randonneService.get(id));
+            Optional<Randonne> randonneOptional = randonneService.get(id);
+            if (randonneOptional.isPresent()) {
+                long duration = System.currentTimeMillis() - startTime;
+                logger.info("getById - Duration: {} ms", duration);
+                return ResponseEntity.ok(randonneOptional.get());
+            } else {
+                long duration = System.currentTimeMillis() - startTime;
+                logger.warn("getById - Duration: {} ms, Randonne not found", duration);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Randonne not found");
+            }
         } catch (Exception e) {
+            long duration = System.currentTimeMillis() - startTime;
+            logger.error("getById - Duration: {} ms", duration, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error retrieving Randonne: " + e.getMessage());
         }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateRandonne(@PathVariable UUID id, @RequestBody Randonne updatedRandonne) {
@@ -74,9 +92,18 @@ public class RandonneMongoDBController {
         return ResponseEntity.ok().body("Randonne deleted successfully");
     }
 
-    @PostMapping("/search")
+    /*@PostMapping("/search")
     public ResponseEntity<List<Randonne>> searchRandonne(@RequestBody RandonneSearchCriteria criteria) {
         List<Randonne> results = randonneService.search(criteria);
+        return ResponseEntity.ok(results);
+    }*/
+
+    @PostMapping("/search")
+    public ResponseEntity<List<Randonne>> searchRandonne(@RequestBody RandonneSearchCriteria criteria) {
+        long startTime = System.currentTimeMillis();
+        List<Randonne> results = randonneService.search(criteria);
+        long duration = System.currentTimeMillis() - startTime;
+        logger.info("searchRandonne - Duration: {} ms", duration);
         return ResponseEntity.ok(results);
     }
 
@@ -91,43 +118,43 @@ public class RandonneMongoDBController {
 
     @GetMapping("/benchmark/create")
     public ResponseEntity<Map<String, Double>> benchmarkCreate() {
-        List<Long> times = benchmarkOperation(1000, "create");
+        List<Long> times = benchmarkOperation(100000, "create");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/get")
     public ResponseEntity<Map<String, Double>> benchmarkGet() {
-        List<Long> times = benchmarkOperation(1000, "get");
+        List<Long> times = benchmarkOperation(100000, "get");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/update")
     public ResponseEntity<Map<String, Double>> benchmarkUpdate() {
-        List<Long> times = benchmarkOperation(1000, "update");
+        List<Long> times = benchmarkOperation(100000, "update");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/delete")
     public ResponseEntity<Map<String, Double>> benchmarkDelete() {
-        List<Long> times = benchmarkOperation(1000, "delete");
+        List<Long> times = benchmarkOperation(100000, "delete");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/search")
     public ResponseEntity<Map<String, Double>> benchmarkSearch() {
-        List<Long> times = benchmarkOperation(1000, "search");
+        List<Long> times = benchmarkOperation(100000, "search");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
     @GetMapping("/benchmark/join")
     public ResponseEntity<Map<String, Double>> benchmarkJoin() {
-        List<Long> times = benchmarkOperation(5, "join");
+        List<Long> times = benchmarkOperation(1, "join");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
-    @GetMapping("/benchmark/join/10")
-    public ResponseEntity<Map<String, Double>> benchmarkJoin10() {
-        List<Long> times = benchmarkOperation(10, "join");
+    @GetMapping("/benchmark/join/5")
+    public ResponseEntity<Map<String, Double>> benchmarkJoin5() {
+        List<Long> times = benchmarkOperation(5, "join");
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
@@ -221,6 +248,96 @@ public class RandonneMongoDBController {
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
+    @GetMapping("/benchmark/create/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate1000000() {
+        List<Long> times = benchmarkOperation(1000000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet1000000() {
+        List<Long> times = benchmarkOperation(1000000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate1000000() {
+        List<Long> times = benchmarkOperation(1000000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete1000000() {
+        List<Long> times = benchmarkOperation(1000000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/1000000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch100000() {
+        List<Long> times = benchmarkOperation(1000000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/create/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate250000() {
+        List<Long> times = benchmarkOperation(250000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet250000() {
+        List<Long> times = benchmarkOperation(250000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate250000() {
+        List<Long> times = benchmarkOperation(250000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete250000() {
+        List<Long> times = benchmarkOperation(250000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/250000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch250000() {
+        List<Long> times = benchmarkOperation(250000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/create/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkCreate500000() {
+        List<Long> times = benchmarkOperation(500000, "create");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/get/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkGet500000() {
+        List<Long> times = benchmarkOperation(500000, "get");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/update/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkUpdate500000() {
+        List<Long> times = benchmarkOperation(500000, "update");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/delete/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkDelete500000() {
+        List<Long> times = benchmarkOperation(500000, "delete");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/500000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch500000() {
+        List<Long> times = benchmarkOperation(500000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
     private List<Long> benchmarkOperation(int count, String operation) {
         List<Long> times = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -275,7 +392,8 @@ public class RandonneMongoDBController {
                     break;
             }
             long endTime = System.nanoTime();
-            times.add(endTime - startTime);
+            long duration = endTime - startTime;
+            times.add(duration);
         }
         return times;
     }
@@ -300,6 +418,7 @@ public class RandonneMongoDBController {
         metrics.put("mean", mean / 1_000_000.0);  // Convert to milliseconds
         metrics.put("min", min / 1_000_000.0);    // Convert to milliseconds
         metrics.put("max", max / 1_000_000.0);    // Convert to milliseconds
+        metrics.put("total", sum / 1_000_000.0);  // Convert to milliseconds
 
         return metrics;
     }
