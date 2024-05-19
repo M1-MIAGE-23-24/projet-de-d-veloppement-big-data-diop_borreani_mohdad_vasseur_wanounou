@@ -433,6 +433,112 @@ export default class Content{
             MongoDB semble meilleur sur le total et la moyenne. En revanche, Redis est meilleur sur le maximum. Pour le minimum, c'est à peu près équivalent.
           </p>
 
+
+          <h3>Benchmark de recherche pour 100 éléments</h3>
+
+          <div class="divv">
+          <div class="divvv">
+          <bt-chart class="char" jsonObjectString='{
+            "chart": {
+              "type": "bar",
+              "data": {
+                "labels": ["MongoDB", "Redis"],
+                "datasets": [
+                {
+                    "label": "Total",
+                    "data": [46989.2622, 46975.37864],
+                    "borderWidth": 1
+                }
+              ]
+              },
+              "options": {
+                "scales": {
+                  "y": {
+                    "beginAtZero": true
+                  }
+                }
+              }
+            }
+          }'></bt-chart>
+          </div>
+          <div class="divvv">
+          <bt-chart class="char" jsonObjectString='{
+            "chart": {
+              "type": "bar",
+              "data": {
+                "labels": ["MongoDB", "Redis"],
+                "datasets": [
+                {
+                  "label": "Minimum",
+                  "data": [240.5545, 236.3749],
+                  "borderWidth": 1
+                }
+              ]
+              },
+              "options": {
+                "scales": {
+                  "y": {
+                    "beginAtZero": true
+                  }
+                }
+              }
+            }
+          }'></bt-chart>
+          </div>
+          <div class="divvv">
+          <bt-chart class="char" jsonObjectString='{
+            "chart": {
+              "type": "bar",
+              "data": {
+                "labels": ["MongoDB", "Redis"],
+                "datasets": [
+                {
+                  "label": "Maximum",
+                  "data": [1418.428, 1419.476
+                  ],
+                  "borderWidth": 1
+                }
+              ]
+              },
+              "options": {
+                "scales": {
+                  "y": {
+                    "beginAtZero": true
+                  }
+                }
+              }
+            }
+          }'></bt-chart>
+          </div>
+          <div class="divvv">
+          <bt-chart class="char" jsonObjectString='{
+            "chart": {
+              "type": "bar",
+              "data": {
+                "labels": ["MongoDB", "Redis"],
+                "datasets": [
+                {
+                  "label": "Moyenne",
+                  "data": [469.892622, 469.892629],
+                  "borderWidth": 1
+                }
+              ]
+              },
+              "options": {
+                "scales": {
+                  "y": {
+                    "beginAtZero": true
+                  }
+                }
+              }
+            }
+          }'></bt-chart>
+          </div>
+          </div>
+          <p>
+            Ici les reqête semblent être équivalentes. Par contre nous pouvons remarquer que les recherches sont plutôt lentes. comparé aux autres opérations
+          </p>
+
           <h3>Conclusion</h3>
           <p>
             Pour conclure il semblerait qu'il n'y ai pas d'énorme différence entre MongoDB une base de donnée orienté document et Redis une base de données de type clef-valeur . Cependant, MongoDB semble être un peu plus rapide sur la création. En revanche, Redis semble être plus rapide sur la récupération et la suppression.
