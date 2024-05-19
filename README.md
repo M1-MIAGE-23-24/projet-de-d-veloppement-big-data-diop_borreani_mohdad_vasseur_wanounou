@@ -14,7 +14,8 @@
 
 ## Introduction
 Ce projet fait partie du programme M1 MIAGE 2023-2024 et a été réalisé par les étudiants Diop, Borreani, Mohdad, Vasseur et Wanounou. L'objectif de ce projet est de concevoir et développer une application Big Data permettant de gérer des données de randonnée en utilisant deux bases de données NoSQL : MongoDB et Redis. Ce projet vise également à comparer les performances des deux bases de données en termes d'opérations CRUD et de recherches multicritères.
-
+Nous sommes conscients que quand on parle du Big Data, c'est pour une grande quantité ou de taille de données. L'objectif était de faire le projet sur un grand volume de données. Cependant nos ordinateurs n'étant pas aussi performant, nous avons décidé de faire le projet avec des données raisonnable qui ne font pas beuguer nos machines (un projet qui marche, pour nous cela ne sert à rien de vous envoyer un projet que vous attendez longuement avant de pouvoir le lancer).  
+Par ailleurs, nous avons fait des itérations allant jusqu'à 1 000 000 de données.
 
 ### Contexte et Objectifs
 
@@ -95,6 +96,27 @@ Ce projet a pour objectifs :
 ![img_6.png](images/img_6test.png)
 
 ![img_7.png](images/img_7test.png)
+
+6. Lancer l'application Front :
+
+    Naviguer dans le répertoire du front :
+    ```bash
+    cd projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou\front
+    ```
+
+    ```bash
+    Ouvrez le fichier index.html avec Live Server ou lancez le en Line de commande.
+    ```
+![imageFront.png](images/imageFront.png)
+
+![Front1.png](images/Front1.png)
+
+6. Lancer l'application Front :
+Comme notre front a été déployé sur un serveur, vous avez aussi l'option de le lancer directement en utilisant ce URL :
+
+**URL Frontend** : [`http://borreani.fr/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/#`](http://borreani.fr/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/#)
+
+![Front2.png](images/Front2.png)
 
 
 ### Premiers pas 
@@ -206,8 +228,13 @@ big_data_m1_23_24/
 - M. BORREANI Théo
 
 ## Utiles
-Pour plus de détails, consultez le [Guide Backend](GuideBackend.md).
+Pour plus de détails, consultez le [Guide Backend](GuideBackend.md).    
+
 Pour plus de détails, consultez le [Guide Frontend](GuideFrontend.md).
+
+Pour notre **frontend**, consultez le lien suivant : [`http://borreani.fr/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/#`](http://borreani.fr/projet-de-d-veloppement-big-data-diop_borreani_mohdad_vasseur_wanounou/front/#)
+
+Veuillez bien lancer l'application Spring côté backend avant de tester le front, sans quoi vous n'aurez pas de retour sur les requêtes.
 
 
 ## Remarques
