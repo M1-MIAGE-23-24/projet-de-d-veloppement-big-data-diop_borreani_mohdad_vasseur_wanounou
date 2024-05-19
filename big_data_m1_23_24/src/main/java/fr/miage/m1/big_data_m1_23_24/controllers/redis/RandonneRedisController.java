@@ -155,6 +155,18 @@ public class RandonneRedisController {
         return ResponseEntity.ok(getBenchmarkMetrics(times));
     }
 
+    @GetMapping("/benchmark/search/1000")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch1000() {
+        List<Long> times = benchmarkOperation(1000, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
+    @GetMapping("/benchmark/search/100")
+    public ResponseEntity<Map<String, Double>> benchmarkSearch100() {
+        List<Long> times = benchmarkOperation(100, "search");
+        return ResponseEntity.ok(getBenchmarkMetrics(times));
+    }
+
     @GetMapping("/benchmark/create/20000")
     public ResponseEntity<Map<String, Double>> benchmarkCreate20000() {
         List<Long> times = benchmarkOperation(20000, "create");
